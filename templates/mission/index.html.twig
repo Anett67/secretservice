@@ -2,7 +2,13 @@
 
 {% block title %}Liste des missions{% endblock %}
 
+{% block header %}
+    <nav class="navbar navbar-expand-lg px-2 px-sm-5 navbar-dark bg-dark justify-content-between">
+        <h1>Missions</h1>
+        <a href="{{ path('app_login') }}" class="btn btn-primary">Se Connecter</a>
+    </nav>
+{% endblock %}
+
 {% block body %}
-    <h1>Missions</h1>
-    <i class="fa fa-500px"></i>
+
 {% endblock %}
