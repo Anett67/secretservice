@@ -14,9 +14,8 @@ class MissionController extends AbstractController
      */
     public function index(): Response
     {
-
         return $this->render('mission/index.html.twig', [
-            'controller_name' => 'MissionController',
+            'controller_name' => 'MissionController'
         ]);
     }
 }
