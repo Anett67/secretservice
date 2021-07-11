@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}Administration{% endblock %}</title>
         {# Run `composer require symfony/webpack-encore-bundle`
            and uncomment the following Encore helpers to start using Symfony UX #}
         {% block stylesheets %}
@@ -14,11 +14,55 @@
         {% endblock %}
     </head>
     <body>
-        <div class="row">
-            <div class="col-3">
-                Nav
-            </div>
-            <div class="col-9">
+        <div class="admin-sidebar-menu bg-primary p-4">
+            <h3>Administration</h3>
+            <nav class="navbar navbar-expand-lg">
+                <ul class="admin-nav navbar-nav my-5 flex-column">
+                    <li class="nav-item py-2 {% if title == 'Missions' %} active {% endif %}">
+                        <a href="{{ path('admin') }}" class="nav-link">
+                           <i class="fa fa-tasks mx-2"></i> MISSIONS</a>
+                    </li>
+                    <li class="nav-item py-2 {% if title == 'Agents' %} active {% endif %}">
+                        <a href="{{ path('admin_agents') }}" class="nav-link">
+                            <i class="fa fa-user-secret mx-2"></i> AGENTS
+                        </a>
+                    </li>
+                    <li class="nav-item py-2 {% if title == 'Contacts' %} active {% endif %}">
+                        <a href="{{ path('admin_contacts') }}" class="nav-link">
+                            <i class="fa fa-phone-square mx-2"></i> CONTACTS
+                        </a>
+                    </li>
+                    <li class="nav-item py-2 {% if title == 'Cibles' %} active {% endif %}">
+                        <a href="{{ path('admin_targets') }}" class="nav-link">
+                            <i class="fa fa-bullseye mx-2"></i> CIBLES
+                        </a>
+                    </li>
+                    <li class="nav-item py-2 {% if title == 'Planques' %} active {% endif %}">
+                        <a href="{{ path('admin_hideouts') }}" class="nav-link">
+                            <i class="fa fa-eye-slash mx-2"></i> PLANQUES
+                        </a>
+                    </li>
+                    <li class="nav-item py-2 {% if title == 'Pays' %} active {% endif %}">
+                        <a href="{{ path('admin_countries') }}" class="nav-link">
+                            <i class="fa fa-globe mx-2"></i> PAYS
+                        </a>
+                    </li>
+                    <li class="nav-item py-2 {% if title == 'Spécialités' %} active {% endif %}">
+                        <a href="{{ path('admin_specialties') }}" class="nav-link">
+                            <i class="fa fa-briefcase mx-2"></i> SPECIALITES
+                        </a>
+                    </li>
+                    <li class="nav-item py-2 {% if title == 'Administrateurs' %} active {% endif %}">
+                        <a href="{{ path('admin_administrators') }}" class="nav-link">
+                            <i class="fa fa-address-card mx-2"></i> ADMINISTRATEUR
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <a href="{{ path('app_logout') }}" class="btn btn-secondary">Se déconnecter</a>
+        </div>
+        <div class="admin-body">
+            <div class="p-4">
                 {% block body %}{% endblock %}
             </div>
         </div>

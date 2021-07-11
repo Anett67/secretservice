@@ -34,4 +34,82 @@ class AdminController extends AbstractController
             'title' => 'Agents'
         ]);
     }
+
+    /**
+     * @Route("/admin/cibles", name="admin_targets")
+     * @IsGranted("ROLE_ADMIN")
+     */
+    public function targets(): Response
+    {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
+        return $this->render('admin/targets.html.twig', [
+            'title' => 'Cibles'
+        ]);
+    }
+
+    /**
+     * @Route("/admin/contacts", name="admin_contacts")
+     * @IsGranted("ROLE_ADMIN")
+     */
+    public function contacts(): Response
+    {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
+        return $this->render('admin/contacts.html.twig', [
+            'title' => 'Contacts'
+        ]);
+    }
+
+    /**
+     * @Route("/admin/planques", name="admin_hideouts")
+     * @IsGranted("ROLE_ADMIN")
+     */
+    public function hideouts(): Response
+    {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
+        return $this->render('admin/hideouts.html.twig', [
+            'title' => 'Planques'
+        ]);
+    }
+
+    /**
+     * @Route("/admin/pays", name="admin_countries")
+     * @IsGranted("ROLE_ADMIN")
+     */
+    public function countries(): Response
+    {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
+        return $this->render('admin/countries.html.twig', [
+            'title' => 'Pays'
+        ]);
+    }
+
+    /**
+     * @Route("/admin/administrateurs", name="admin_administrators")
+     * @IsGranted("ROLE_ADMIN")
+     */
+    public function administrators(): Response
+    {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
+        return $this->render('admin/Administrators.html.twig', [
+            'title' => 'Administrateurs'
+        ]);
+    }
+
+    /**
+     * @Route("/admin/specialites", name="admin_specialties")
+     * @IsGranted("ROLE_ADMIN")
+     */
+    public function specialties(): Response
+    {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
+        return $this->render('admin/specialties.html.twig', [
+            'title' => 'Spécialités'
+        ]);
+    }
 }
