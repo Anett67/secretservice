@@ -4,8 +4,10 @@ namespace App\Form;
 
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class UserType extends AbstractType
 {
@@ -13,10 +15,15 @@ class UserType extends AbstractType
     {
         $builder
             ->add('email')
-            //->add('roles')
-            ->add('password')
-            ->add('firstname')
-            ->add('lastname')
+            ->add('password', TextType::class, [
+                'label' => 'Mot de passe'
+            ])
+            ->add('lastname', TextType::class, [
+                'label' => 'Nom'
+            ])
+            ->add('firstname', TextType::class, [
+                'label' => 'Prénom'
+            ])
         ;
     }
 

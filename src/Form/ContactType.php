@@ -3,7 +3,11 @@
 namespace App\Form;
 
 use App\Entity\Contact;
+use App\Entity\Country;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -12,11 +16,24 @@ class ContactType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('lastname')
-            ->add('firstname')
-            ->add('date_of_birth')
-            ->add('code_name')
-            ->add('nationality')
+            ->add('lastname', TextType::class, [
+                'label' => 'Nom'
+            ])
+            ->add('firstname', TextType::class, [
+                'label' => 'Prénom'
+            ])
+            ->add('date_of_birth', DateType::class, [
+                'label' => 'Date de naissance',
+                'years' => range(date('Y') - 100, date('Y'))
+            ])
+            ->add('code_name', TextType::class, [
+                'label' => 'Code'
+            ])
+            ->add('nationality', EntityType::class, [
+                'label' => 'Nationalité',
+                'class' => Country::class,
+                'choice_label' => 'nationality'
+            ])
         ;
     }
 

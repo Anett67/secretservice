@@ -3,12 +3,12 @@
 namespace App\Controller;
 
 use App\Entity\Hideout;
+use App\Form\HideoutsType;
 use App\Entity\HideoutType;
-use App\Form\HideoutType as FormHideoutType;
 use App\Form\HideoutTypeType;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class HideoutCrudController extends AbstractController
 {
@@ -20,7 +20,7 @@ class HideoutCrudController extends AbstractController
 
         $hideout = new Hideout();
 
-        $form = $this->createForm(FormHideoutType::class, $hideout);
+        $form = $this->createForm(HideoutsType::class, $hideout);
 
         return $this->render('hideout_crud/hideout_create.html.twig', [
             'title' => 'Planques',

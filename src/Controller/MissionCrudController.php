@@ -3,14 +3,14 @@
 namespace App\Controller;
 
 use App\Entity\Mission;
-use App\Entity\MissionStatus;
+use App\Form\MissionsType;
 use App\Entity\MissionType;
-use App\Form\MissionStatusType;
-use App\Form\MissionType as FormMissionType;
+use App\Entity\MissionStatus;
 use App\Form\MissionTypeType;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Form\MissionStatusType;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class MissionCrudController extends AbstractController
 {
@@ -21,7 +21,7 @@ class MissionCrudController extends AbstractController
     {
         $mission = new Mission();
 
-        $form = $this->createForm(FormMissionType::class, $mission);
+        $form = $this->createForm(MissionsType::class, $mission);
 
         return $this->render('mission_crud/mission_create.html.twig', [
             'controller_name' => 'MissionCrudController',
