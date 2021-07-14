@@ -9,11 +9,11 @@ use Symfony\Component\Routing\Annotation\Route;
 class MissionCrudController extends AbstractController
 {
     /**
-     * @Route("/mission/crud", name="mission_crud")
+     * @Route("/mission/create", name="mission_create")
      */
-    public function index(): Response
+    public function create(): Response
     {
-        return $this->render('mission_crud/index.html.twig', [
+        return $this->render('mission_crud/mission_create.html.twig', [
             'controller_name' => 'MissionCrudController',
         ]);
     }

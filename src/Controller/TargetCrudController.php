@@ -9,11 +9,11 @@ use Symfony\Component\Routing\Annotation\Route;
 class TargetCrudController extends AbstractController
 {
     /**
-     * @Route("/target/crud", name="target_crud")
+     * @Route("/target/create", name="target_create")
      */
-    public function index(): Response
+    public function create(): Response
     {
-        return $this->render('target_crud/index.html.twig', [
+        return $this->render('target_crud/target_create.html.twig', [
             'controller_name' => 'TargetCrudController',
         ]);
     }

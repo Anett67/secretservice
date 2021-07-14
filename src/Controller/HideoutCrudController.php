@@ -9,11 +9,11 @@ use Symfony\Component\Routing\Annotation\Route;
 class HideoutCrudController extends AbstractController
 {
     /**
-     * @Route("/hideout/crud", name="hideout_crud")
+     * @Route("/hideout/create", name="hideout_create")
      */
-    public function index(): Response
+    public function create(): Response
     {
-        return $this->render('hideout_crud/index.html.twig', [
+        return $this->render('hideout_crud/hideout_create.html.twig', [
             'controller_name' => 'HideoutCrudController',
         ]);
     }

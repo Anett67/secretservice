@@ -9,11 +9,11 @@ use Symfony\Component\Routing\Annotation\Route;
 class UserCrudController extends AbstractController
 {
     /**
-     * @Route("/user/crud", name="user_crud")
+     * @Route("/user/create", name="user_create")
      */
-    public function index(): Response
+    public function create(): Response
     {
-        return $this->render('user_crud/index.html.twig', [
+        return $this->render('user_crud/user_create.html.twig', [
             'controller_name' => 'UserCrudController',
         ]);
     }

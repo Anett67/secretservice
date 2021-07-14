@@ -9,11 +9,11 @@ use Symfony\Component\Routing\Annotation\Route;
 class SpecialtyCrudController extends AbstractController
 {
     /**
-     * @Route("/specialty/crud", name="specialty_crud")
+     * @Route("/specialty/create", name="specialty_create")
      */
-    public function index(): Response
+    public function create(): Response
     {
-        return $this->render('specialty_crud/index.html.twig', [
+        return $this->render('specialty_crud/specialty_create.html.twig', [
             'controller_name' => 'SpecialtyCrudController',
         ]);
     }
