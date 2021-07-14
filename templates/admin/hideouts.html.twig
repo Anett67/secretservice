@@ -16,6 +16,7 @@
                 <th>Code</th>
                 <th>Pays</th>
                 <th>Type</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -25,6 +26,10 @@
                     <td>{{ hideout.code }}</td>
                     <td>{{ hideout.country.name }}</td>
                     <td>{{ hideout.type.name }}</td>
+                    <td>
+                        <a href=""><i class="text-warning fa fa-edit"></i></a>
+                        <a href=""><i class="text-danger fa fa-times"></i></a>
+                    </td>
                 </tr>
             {% endfor %}
         </tbody>
@@ -42,6 +47,7 @@
                     <tr>
                         <th>Id</th>
                         <th>Nom</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -49,6 +55,10 @@
                         <tr>
                             <td>{{ type.id }}</td>
                             <td>{{ type.name }}</td>
+                            <td>
+                                <a href=""><i class="text-warning fa fa-edit"></i></a>
+                                <a href=""><i class="text-danger fa fa-times"></i></a>
+                            </td>
                         </tr>
                     {% endfor %}
                 </tbody>

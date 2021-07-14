@@ -19,6 +19,7 @@
                 <th>Id Code</th>
                 <th>Nationalité</th>
                 <th>Spécialité</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -34,6 +35,10 @@
                         {% for specialty in agent.specialty %}
                             {{ specialty.name }} |
                         {% endfor %}
+                    </td>
+                    <td>
+                        <a href=""><i class="text-warning fa fa-edit"></i></a>
+                        <a href=""><i class="text-danger fa fa-times"></i></a>
                     </td>
                 </tr>
             {% endfor %}

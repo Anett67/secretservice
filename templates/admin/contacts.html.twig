@@ -18,6 +18,7 @@
                 <th>Date de naissance</th>
                 <th>Id Code</th>
                 <th>Nationalité</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -29,6 +30,10 @@
                     <td>{{ contact.getDateOfBirth|date('d-m-Y') }}</td>
                     <td>{{ contact.getCodeName }}</td>
                     <td>{{ contact.nationality.nationality }}</td>
+                    <td>
+                        <a href=""><i class="text-warning fa fa-edit"></i></a>
+                        <a href=""><i class="text-danger fa fa-times"></i></a>
+                    </td>
                 </tr>
             {% endfor %}
         </tbody>

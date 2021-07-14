@@ -17,6 +17,7 @@
                     <tr>
                         <th>Id</th>
                         <th>Nom</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -24,6 +25,10 @@
                         <tr>
                             <td>{{ specialty.id }}</td>
                             <td>{{ specialty.name }}</td>
+                            <td>
+                                <a href=""><i class="text-warning fa fa-edit"></i></a>
+                                <a href=""><i class="text-danger fa fa-times"></i></a>
+                            </td>
                         </tr>
                     {% endfor %}
                 </tbody>
