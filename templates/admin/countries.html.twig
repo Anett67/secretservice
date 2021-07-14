@@ -5,7 +5,9 @@
 
     <h1>Pays</h1>
 
-    <a href="{{ path('country_create') }}" class="btn btn-success mt-3">Ajouter</a>
+    <a href="{{ path('country_create') }}" class="btn btn-info mt-3">Ajouter</a>
+
+    {% include "flashMessages.html.twig" %}
 
     <div class="row">
 
@@ -19,6 +21,12 @@
                     </tr>
                 </thead>
                 <tbody>
+                    {% for country in countries %}
+                        <tr>
+                            <td>{{ country.name }}</td>
+                            <td>{{ country.nationality }}</td>
+                        </tr>
+                    {% endfor %}
                 </tbody>
             </table>
 

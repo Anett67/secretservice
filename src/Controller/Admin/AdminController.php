@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Repository\CountryRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
@@ -78,12 +79,13 @@ class AdminController extends AbstractController
      * @Route("/admin/pays", name="admin_countries")
      * @IsGranted("ROLE_ADMIN")
      */
-    public function countries(): Response
+    public function countries(CountryRepository $repository): Response
     {
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
 
         return $this->render('admin/countries.html.twig', [
-            'title' => 'Pays'
+            'title' => 'Pays',
+            'countries' => $repository->findAll()
         ]);
     }
 
