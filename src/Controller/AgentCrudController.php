@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class AgentCrudController extends AbstractController
 {
     /**
-     * @Route("/agent/create", name="agent_create")
+     * @Route("/agent/creation", name="agent_create")
      */
     public function agent_create(): Response
     {

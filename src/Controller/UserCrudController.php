@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class UserCrudController extends AbstractController
 {
     /**
-     * @Route("/user/create", name="user_create")
+     * @Route("/utilisateur/creation", name="user_create")
      */
     public function user_create(): Response
     {

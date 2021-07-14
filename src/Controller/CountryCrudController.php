@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class CountryCrudController extends AbstractController
 {
     /**
-     * @Route("/country/create", name="country_create")
+     * @Route("/pays/creation", name="country_create")
      */
     public function country_create(): Response
     {

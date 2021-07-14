@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class SpecialtyCrudController extends AbstractController
 {
     /**
-     * @Route("/specialty/create", name="specialty_create")
+     * @Route("/specialite/creation", name="specialty_create")
      */
     public function specialty_create(): Response
     {

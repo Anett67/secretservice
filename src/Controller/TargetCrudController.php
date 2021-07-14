@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class TargetCrudController extends AbstractController
 {
     /**
-     * @Route("/target/create", name="target_create")
+     * @Route("/cible/creation", name="target_create")
      */
     public function target_create(): Response
     {

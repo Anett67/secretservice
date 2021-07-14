@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class HideoutCrudController extends AbstractController
 {
     /**
-     * @Route("/hideout/create", name="hideout_create")
+     * @Route("/planque/creation", name="hideout_create")
      */
     public function hideout_create_create(): Response
     {
@@ -30,7 +30,7 @@ class HideoutCrudController extends AbstractController
     }
 
     /**
-     * @Route("/hideout-type/create", name="hideout_type_create")
+     * @Route("/planque-type/creation", name="hideout_type_create")
      */
     public function hideout_type_create(): Response
     {

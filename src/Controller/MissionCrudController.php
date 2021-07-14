@@ -15,7 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class MissionCrudController extends AbstractController
 {
     /**
-     * @Route("/mission/create", name="mission_create")
+     * @Route("/mission/creation", name="mission_create")
      */
     public function mission_create(): Response
     {
@@ -31,7 +31,7 @@ class MissionCrudController extends AbstractController
     }
 
     /**
-     * @Route("/mission-type/create", name="mission_type_create")
+     * @Route("/mission-type/creation", name="mission_type_create")
      */
     public function mission_type_create(): Response
     {
@@ -47,7 +47,7 @@ class MissionCrudController extends AbstractController
     }
 
     /**
-     * @Route("/mission-status/create", name="mission_status_create")
+     * @Route("/mission-status/creation", name="mission_status_create")
      */
     public function mission_status_create(): Response
     {
