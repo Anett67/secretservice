@@ -21,6 +21,16 @@
             </tr>
         </thead>
         <tbody>
+            {% for target in targets %}
+                <tr>
+                    <td>{{ target.id }}</td>
+                    <td>{{ target.lastname }}</td>
+                    <td>{{ target.firstname }}</td>
+                    <td>{{ target.getDateOfBirth|date('d-m-Y') }}</td>
+                    <td>{{ target.getCodeName }}</td>
+                    <td>{{ target.nationality.nationality }}</td>
+                </tr>
+            {% endfor %}
         </tbody>
     </table>
 

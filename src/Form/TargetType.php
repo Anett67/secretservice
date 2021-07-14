@@ -23,7 +23,8 @@ class TargetType extends AbstractType
                 'label' => 'Prénom'
             ])
             ->add('date_of_birth', DateType::class, [
-                'label' => 'Date de naissance'
+                'label' => 'Date de naissance',
+                'years' => range(date('Y') - 100, date('Y'))
             ])
             ->add('code_name', TextType::class, [
                 'label' => 'Code'
