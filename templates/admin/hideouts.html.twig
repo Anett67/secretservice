@@ -45,7 +45,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                
+                    {% for type in hideoutTypes %}
+                        <tr>
+                            <td>{{ type.id }}</td>
+                            <td>{{ type.name }}</td>
+                        </tr>
+                    {% endfor %}
                 </tbody>
             </table>
         </div>
