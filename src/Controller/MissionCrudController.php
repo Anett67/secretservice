@@ -15,6 +15,7 @@ class MissionCrudController extends AbstractController
     {
         return $this->render('mission_crud/mission_create.html.twig', [
             'controller_name' => 'MissionCrudController',
+            'title' => 'Missions'
         ]);
     }
 
@@ -23,8 +24,9 @@ class MissionCrudController extends AbstractController
      */
     public function mission_type_create(): Response
     {
-        return $this->render('mission_crud/mission_create.html.twig', [
+        return $this->render('mission_crud/mission_type_create.html.twig', [
             'controller_name' => 'MissionCrudController',
+            'title' => 'Missions'
         ]);
     }
 
@@ -33,8 +35,9 @@ class MissionCrudController extends AbstractController
      */
     public function mission_status_create(): Response
     {
-        return $this->render('mission_crud/mission_create.html.twig', [
+        return $this->render('mission_crud/mission_status_create.html.twig', [
             'controller_name' => 'MissionCrudController',
+            'title' => 'Missions'
         ]);
     }
 }

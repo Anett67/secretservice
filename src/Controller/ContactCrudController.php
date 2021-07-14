@@ -15,6 +15,7 @@ class ContactCrudController extends AbstractController
     {
         return $this->render('contact_crud/contact_create.html.twig', [
             'controller_name' => 'ContactCrudController',
+            'title' => 'Contacts'
         ]);
     }
 }

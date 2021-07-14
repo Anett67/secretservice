@@ -15,6 +15,7 @@ class SpecialtyCrudController extends AbstractController
     {
         return $this->render('specialty_crud/specialty_create.html.twig', [
             'controller_name' => 'SpecialtyCrudController',
+            'title' => 'Spécialité'
         ]);
     }
 }

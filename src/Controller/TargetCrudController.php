@@ -15,6 +15,7 @@ class TargetCrudController extends AbstractController
     {
         return $this->render('target_crud/target_create.html.twig', [
             'controller_name' => 'TargetCrudController',
+            'title' => 'Cibles'
         ]);
     }
 }

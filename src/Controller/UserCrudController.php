@@ -15,6 +15,7 @@ class UserCrudController extends AbstractController
     {
         return $this->render('user_crud/user_create.html.twig', [
             'controller_name' => 'UserCrudController',
+            'title' => 'Administrateur'
         ]);
     }
 }

@@ -15,6 +15,7 @@ class CountryCrudController extends AbstractController
     {
         return $this->render('country_crud/country_create.html.twig', [
             'controller_name' => 'CountryCrudController',
+            'title' => 'Pays'
         ]);
     }
 }

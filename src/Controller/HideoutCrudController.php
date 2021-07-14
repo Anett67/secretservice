@@ -15,6 +15,7 @@ class HideoutCrudController extends AbstractController
     {
         return $this->render('hideout_crud/hideout_create.html.twig', [
             'controller_name' => 'HideoutCrudController',
+            'title' => 'Planques'
         ]);
     }
 
@@ -23,8 +24,9 @@ class HideoutCrudController extends AbstractController
      */
     public function hideout_type_create(): Response
     {
-        return $this->render('hideout_crud/hideout_create.html.twig', [
+        return $this->render('hideout_crud/hideout_type_create.html.twig', [
             'controller_name' => 'HideoutCrudController',
+            'title' => 'Planques'
         ]);
     }
 }
