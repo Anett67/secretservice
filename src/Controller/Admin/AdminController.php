@@ -3,6 +3,9 @@
 namespace App\Controller\Admin;
 
 use App\Repository\CountryRepository;
+use App\Repository\MissionRepository;
+use App\Repository\MissionStatusRepository;
+use App\Repository\MissionTypeRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
@@ -14,12 +17,15 @@ class AdminController extends AbstractController
      * @Route("/admin/missions", name="admin")
      * @IsGranted("ROLE_ADMIN")
      */
-    public function index(): Response
+    public function index(MissionRepository $mission_repository, MissionStatusRepository $mission_status_repository, MissionTypeRepository $mission_type_repository): Response
     {
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
 
         return $this->render('admin/missions.html.twig', [
-            'title' => 'Missions'
+            'title' => 'Missions',
+            'missions' => $mission_repository->findAll(),
+            'mission_types' => $mission_type_repository->findAll(),
+            'mission_statuses' => $mission_status_repository->findAll()
         ]);
     }
 
