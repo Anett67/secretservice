@@ -34,11 +34,23 @@ class MissionCrudController extends AbstractController
     /**
      * @Route("/mission-type/creation", name="mission_type_create")
      */
-    public function mission_type_create(): Response
+    public function mission_type_create(Request $request, EntityManagerInterface $manager): Response
     {
         $mission_type = new MissionType();
 
         $form = $this->createForm(MissionTypeType::class, $mission_type);
+
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()){
+
+            $manager->persist($mission_type);
+            $manager->flush();
+
+            $this->addFlash('success', 'Un nouveau type de mission a été ajouté avec succès');
+
+            return $this->redirectToRoute('admin');
+        }
 
         return $this->render('mission_crud/mission_type_create.html.twig', [
             'title' => 'Missions',
