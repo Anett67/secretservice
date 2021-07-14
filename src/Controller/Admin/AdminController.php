@@ -2,10 +2,12 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\HideoutType;
 use App\Repository\AgentRepository;
 use App\Repository\ContactRepository;
 use App\Repository\CountryRepository;
 use App\Repository\HideoutRepository;
+use App\Repository\HideoutTypeRepository;
 use App\Repository\MissionRepository;
 use App\Repository\MissionStatusRepository;
 use App\Repository\MissionTypeRepository;
@@ -82,13 +84,14 @@ class AdminController extends AbstractController
      * @Route("/admin/planques", name="admin_hideouts")
      * @IsGranted("ROLE_ADMIN")
      */
-    public function hideouts(HideoutRepository $repository): Response
+    public function hideouts(HideoutRepository $repository, HideoutTypeRepository $hideoutTypeRepository): Response
     {
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
 
         return $this->render('admin/hideouts.html.twig', [
             'title' => 'Planques',
-            'hideouts' => $repository->findAll()
+            'hideouts' => $repository->findAll(),
+            'hideoutTypes' => $hideoutTypeRepository->findAll()
         ]);
     }
 
