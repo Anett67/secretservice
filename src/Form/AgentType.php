@@ -18,7 +18,6 @@ class AgentType extends AbstractType
             ->add('id_code')
             ->add('nationality')
             ->add('specialty')
-            ->add('missions')
         ;
     }
 

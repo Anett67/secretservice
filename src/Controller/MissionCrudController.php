@@ -56,7 +56,6 @@ class MissionCrudController extends AbstractController
         $form = $this->createForm(MissionStatusType::class, $mission_status);
 
         return $this->render('mission_crud/mission_status_create.html.twig', [
-            'controller_name' => 'MissionCrudController',
             'title' => 'Missions',
             'form' => $form->createView()
         ]);

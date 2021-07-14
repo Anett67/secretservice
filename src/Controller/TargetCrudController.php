@@ -20,7 +20,6 @@ class TargetCrudController extends AbstractController
         $form = $this->createForm(TargetType::class, $target);
 
         return $this->render('target_crud/target_create.html.twig', [
-            'controller_name' => 'TargetCrudController',
             'title' => 'Cibles',
             'form' => $form->createView()
         ]);

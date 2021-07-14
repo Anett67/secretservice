@@ -21,7 +21,6 @@ class AgentCrudController extends AbstractController
         $form = $this->createForm(AgentType::class, $agent);
 
         return $this->render('agent_crud/agent_create.html.twig', [
-            'controller_name' => 'AgentCrudController',
             'title' => 'Agents',
             'form' => $form->createView()
         ]);

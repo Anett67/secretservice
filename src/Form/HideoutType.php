@@ -16,7 +16,6 @@ class HideoutType extends AbstractType
             ->add('address')
             ->add('country')
             ->add('type')
-            ->add('missions')
         ;
     }
 

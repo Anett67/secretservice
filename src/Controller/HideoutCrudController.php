@@ -23,7 +23,6 @@ class HideoutCrudController extends AbstractController
         $form = $this->createForm(FormHideoutType::class, $hideout);
 
         return $this->render('hideout_crud/hideout_create.html.twig', [
-            'controller_name' => 'HideoutCrudController',
             'title' => 'Planques',
             'form' => $form->createView()
         ]);

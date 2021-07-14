@@ -20,7 +20,6 @@ class SpecialtyCrudController extends AbstractController
         $form = $this->createForm(SpecialtyType::class, $specialty);
 
         return $this->render('specialty_crud/specialty_create.html.twig', [
-            'controller_name' => 'SpecialtyCrudController',
             'title' => 'Spécialité',
             'form' => $form->createView()
         ]);

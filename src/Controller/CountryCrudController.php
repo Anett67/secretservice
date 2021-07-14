@@ -21,7 +21,6 @@ class CountryCrudController extends AbstractController
         $form = $this->createForm(CountryType::class, $country);
 
         return $this->render('country_crud/country_create.html.twig', [
-            'controller_name' => 'CountryCrudController',
             'title' => 'Pays',
             'form' => $form->createView()
         ]);
