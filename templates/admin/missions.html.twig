@@ -27,6 +27,35 @@
             </tr>
         </thead>
         <tbody>
+            {% for mission in missions %}
+                <tr>
+                    <td>{{ mission.id }}</td>
+                    <td>{{ mission.title }}</td>
+                    <td>{{ mission.getCodeName }}</td>
+                    <td>{{ mission.country.name }}</td>
+                    <td>{{ mission.specialty.name }}</td>
+                    <td>{{ mission.type.name }}</td>
+                    <td>  
+                        {% for target in mission.target %}
+                            {{ target.firstname }} {{ target.lastname }} |
+                        {% endfor %}
+                    </td>
+                    <td>  
+                        {% for hideout in mission.hideout %}
+                            {{ hideout.code }} |
+                        {% endfor %}
+                    </td>
+                    <td>  
+                        {% for agent in mission.agent %}
+                            {{ agent.firstname }} {{ agent.lastname }} |
+                        {% endfor %}
+                    </td>
+                    <td>{{ mission.getStartDate|date('d-m-Y') }}</td>
+                    <td>{{ mission.getEndDate|date('d-m-Y') }}</td>
+                    <td>{{ mission.status.name }}</td>
+                    <td>Icon Icon</td>
+                </tr>
+            {% endfor %}
         </tbody>
     </table>
 

@@ -17,12 +17,14 @@
                 <thead>
                     <tr>
                         <th>Id</th>
-                        <th>Nom</th>
+                        <th>Pays</th>
+                        <th>Nationalité</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for country in countries %}
                         <tr>
+                            <td>{{ country.id }}</td>
                             <td>{{ country.name }}</td>
                             <td>{{ country.nationality }}</td>
                         </tr>
