@@ -20,7 +20,6 @@ class UserCrudController extends AbstractController
         $form = $this->createForm(UserType::class, $user);
 
         return $this->render('user_crud/user_create.html.twig', [
-            'controller_name' => 'UserCrudController',
             'title' => 'Administrateur',
             'form' => $form->createView()
         ]);
