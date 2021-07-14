@@ -7,6 +7,8 @@
 
     <a href="{{ path('specialty_create') }}" class="btn btn-info mt-3">Ajouter</a>
 
+    {% include "flashMessages.html.twig" %}
+
     <div class="row">
 
         <div class="col col-sm-6">
@@ -18,6 +20,12 @@
                     </tr>
                 </thead>
                 <tbody>
+                    {% for specialty in specialties %}
+                        <tr>
+                            <td>{{ specialty.id }}</td>
+                            <td>{{ specialty.name }}</td>
+                        </tr>
+                    {% endfor %}
                 </tbody>
             </table>
     

@@ -6,6 +6,8 @@ use App\Repository\CountryRepository;
 use App\Repository\MissionRepository;
 use App\Repository\MissionStatusRepository;
 use App\Repository\MissionTypeRepository;
+use App\Repository\SpecialtyRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
@@ -112,12 +114,13 @@ class AdminController extends AbstractController
      * @Route("/admin/specialites", name="admin_specialties")
      * @IsGranted("ROLE_ADMIN")
      */
-    public function specialties(): Response
+    public function specialties(SpecialtyRepository $repository): Response
     {
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
 
         return $this->render('admin/specialties.html.twig', [
-            'title' => 'Spécialités'
+            'title' => 'Spécialités',
+            'specialties' => $repository->findAll()
         ]);
     }
 }
