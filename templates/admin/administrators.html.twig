@@ -19,6 +19,17 @@
             </tr>
         </thead>
         <tbody>
+            {% for user in users %}
+                <tr>
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.lastname }}</td>
+                    <td>{{ user.firstname }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.getCreatedAt|date('d-m-Y') }}</td>
+                    <td>{{ user.roles|join(', ') }}
+                    </td>
+                </tr>
+            {% endfor %}
         </tbody>
     </table>
 

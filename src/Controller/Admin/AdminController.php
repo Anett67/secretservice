@@ -2,11 +2,16 @@
 
 namespace App\Controller\Admin;
 
+use App\Repository\AgentRepository;
+use App\Repository\ContactRepository;
 use App\Repository\CountryRepository;
+use App\Repository\HideoutRepository;
 use App\Repository\MissionRepository;
 use App\Repository\MissionStatusRepository;
 use App\Repository\MissionTypeRepository;
 use App\Repository\SpecialtyRepository;
+use App\Repository\TargetRepository;
+use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -35,12 +40,13 @@ class AdminController extends AbstractController
      * @Route("/admin/agents", name="admin_agents")
      * @IsGranted("ROLE_ADMIN")
      */
-    public function agents(): Response
+    public function agents(AgentRepository $repository): Response
     {
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
 
         return $this->render('admin/Agents.html.twig', [
-            'title' => 'Agents'
+            'title' => 'Agents',
+            'agents' => $repository->findAll()
         ]);
     }
 
@@ -48,12 +54,13 @@ class AdminController extends AbstractController
      * @Route("/admin/cibles", name="admin_targets")
      * @IsGranted("ROLE_ADMIN")
      */
-    public function targets(): Response
+    public function targets(TargetRepository $repository): Response
     {
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
 
         return $this->render('admin/targets.html.twig', [
-            'title' => 'Cibles'
+            'title' => 'Cibles',
+            'targets' => $repository->findAll()
         ]);
     }
 
@@ -61,12 +68,13 @@ class AdminController extends AbstractController
      * @Route("/admin/contacts", name="admin_contacts")
      * @IsGranted("ROLE_ADMIN")
      */
-    public function contacts(): Response
+    public function contacts(ContactRepository $repository): Response
     {
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
 
         return $this->render('admin/contacts.html.twig', [
-            'title' => 'Contacts'
+            'title' => 'Contacts',
+            'contacts' => $repository->findAll()
         ]);
     }
 
@@ -74,12 +82,13 @@ class AdminController extends AbstractController
      * @Route("/admin/planques", name="admin_hideouts")
      * @IsGranted("ROLE_ADMIN")
      */
-    public function hideouts(): Response
+    public function hideouts(HideoutRepository $repository): Response
     {
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
 
         return $this->render('admin/hideouts.html.twig', [
-            'title' => 'Planques'
+            'title' => 'Planques',
+            'hideouts' => $repository->findAll()
         ]);
     }
 
@@ -101,12 +110,13 @@ class AdminController extends AbstractController
      * @Route("/admin/administrateurs", name="admin_administrators")
      * @IsGranted("ROLE_ADMIN")
      */
-    public function administrators(): Response
+    public function administrators(UserRepository $repository): Response
     {
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
 
         return $this->render('admin/Administrators.html.twig', [
-            'title' => 'Administrateurs'
+            'title' => 'Administrateurs',
+            'users' => $repository->findAll()
         ]);
     }
 
