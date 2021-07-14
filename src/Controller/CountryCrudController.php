@@ -11,7 +11,7 @@ class CountryCrudController extends AbstractController
     /**
      * @Route("/country/create", name="country_create")
      */
-    public function create(): Response
+    public function country_create(): Response
     {
         return $this->render('country_crud/country_create.html.twig', [
             'controller_name' => 'CountryCrudController',

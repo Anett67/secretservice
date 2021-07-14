@@ -11,7 +11,7 @@ class UserCrudController extends AbstractController
     /**
      * @Route("/user/create", name="user_create")
      */
-    public function create(): Response
+    public function user_create(): Response
     {
         return $this->render('user_crud/user_create.html.twig', [
             'controller_name' => 'UserCrudController',

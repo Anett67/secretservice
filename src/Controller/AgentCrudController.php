@@ -11,7 +11,7 @@ class AgentCrudController extends AbstractController
     /**
      * @Route("/agent/create", name="agent_create")
      */
-    public function create(): Response
+    public function agent_create(): Response
     {
         return $this->render('agent_crud/agent_create.html.twig', [
             'controller_name' => 'AgentCrudController',

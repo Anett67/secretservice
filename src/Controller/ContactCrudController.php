@@ -11,7 +11,7 @@ class ContactCrudController extends AbstractController
     /**
      * @Route("/contact/create", name="contact_create")
      */
-    public function create(): Response
+    public function contact_create(): Response
     {
         return $this->render('contact_crud/contact_create.html.twig', [
             'controller_name' => 'ContactCrudController',

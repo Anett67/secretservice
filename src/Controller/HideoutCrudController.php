@@ -11,7 +11,17 @@ class HideoutCrudController extends AbstractController
     /**
      * @Route("/hideout/create", name="hideout_create")
      */
-    public function create(): Response
+    public function hideout_create_create(): Response
+    {
+        return $this->render('hideout_crud/hideout_create.html.twig', [
+            'controller_name' => 'HideoutCrudController',
+        ]);
+    }
+
+    /**
+     * @Route("/hideout-type/create", name="hideout_type_create")
+     */
+    public function hideout_type_create(): Response
     {
         return $this->render('hideout_crud/hideout_create.html.twig', [
             'controller_name' => 'HideoutCrudController',

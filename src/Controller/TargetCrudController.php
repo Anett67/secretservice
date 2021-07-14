@@ -11,7 +11,7 @@ class TargetCrudController extends AbstractController
     /**
      * @Route("/target/create", name="target_create")
      */
-    public function create(): Response
+    public function target_create(): Response
     {
         return $this->render('target_crud/target_create.html.twig', [
             'controller_name' => 'TargetCrudController',

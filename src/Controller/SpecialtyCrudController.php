@@ -11,7 +11,7 @@ class SpecialtyCrudController extends AbstractController
     /**
      * @Route("/specialty/create", name="specialty_create")
      */
-    public function create(): Response
+    public function specialty_create(): Response
     {
         return $this->render('specialty_crud/specialty_create.html.twig', [
             'controller_name' => 'SpecialtyCrudController',
