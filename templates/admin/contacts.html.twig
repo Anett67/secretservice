@@ -31,7 +31,7 @@
                     <td>{{ contact.getCodeName }}</td>
                     <td>{{ contact.nationality.nationality }}</td>
                     <td>
-                        <a href=""><i class="text-warning fa fa-edit"></i></a>
+                        <a href="{{ path('contact_edit', {'id': contact.id }) }}"><i class="text-warning fa fa-edit"></i></a>
                         <a href=""><i class="text-danger fa fa-times"></i></a>
                     </td>
                 </tr>

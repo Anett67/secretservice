@@ -29,7 +29,7 @@
                             <td>{{ country.name }}</td>
                             <td>{{ country.nationality }}</td>
                             <td>
-                                <a href=""><i class="text-warning fa fa-edit"></i></a>
+                                <a href="{{ path('country_edit', {'id': country.id }) }}"><i class="text-warning fa fa-edit"></i></a>
                                 <a href=""><i class="text-danger fa fa-times"></i></a>
                             </td>
                         </tr>

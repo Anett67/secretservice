@@ -31,7 +31,7 @@
                     <td>{{ target.getCodeName }}</td>
                     <td>{{ target.nationality.nationality }}</td>
                     <td>
-                        <a href=""><i class="text-warning fa fa-edit"></i></a>
+                        <a href="{{ path('target_edit', {'id': target.id }) }}"><i class="text-warning fa fa-edit"></i></a>
                         <a href=""><i class="text-danger fa fa-times"></i></a>
                     </td>
                 </tr>

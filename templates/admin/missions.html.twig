@@ -54,7 +54,7 @@
                     <td>{{ mission.getEndDate|date('d-m-Y') }}</td>
                     <td>{{ mission.status.name }}</td>
                     <td>
-                        <a href=""><i class="text-warning fa fa-edit"></i></a>
+                        <a href="{{ path('mission_edit', {'id': mission.id }) }}"><i class="text-warning fa fa-edit"></i></a>
                         <a href=""><i class="text-danger fa fa-times"></i></a>
                     </td>
                 </tr>
@@ -83,7 +83,7 @@
                             <td>{{ type.id }}</td>
                             <td>{{ type.name }}</td>
                             <td>
-                                <a href=""><i class="text-warning fa fa-edit"></i></a>
+                                <a href="{{ path('mission_type_edit', {'id': type.id }) }}"><i class="text-warning fa fa-edit"></i></a>
                                 <a href=""><i class="text-danger fa fa-times"></i></a>
                             </td>
                         </tr>
@@ -111,7 +111,7 @@
                             <td>{{ status.id }}</td>
                             <td>{{ status.name }}</td>
                             <td>
-                                <a href=""><i class="text-warning fa fa-edit"></i></a>
+                                <a href="{{ path('mission_status_edit', {'id': status.id }) }}"><i class="text-warning fa fa-edit"></i></a>
                                 <a href=""><i class="text-danger fa fa-times"></i></a>
                             </td>
                         </tr>
@@ -121,9 +121,5 @@
         </div>
     
     </div>
-
-
-
-
 
 {% endblock %}
