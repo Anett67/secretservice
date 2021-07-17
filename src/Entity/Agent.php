@@ -6,9 +6,12 @@ use App\Repository\AgentRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass=AgentRepository::class)
+ * @UniqueEntity("id_code", message="Un agent avec ce code existe déjà")
  */
 class Agent
 {
@@ -21,21 +24,38 @@ class Agent
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(
+     *      min=3, 
+     *      minMessage="Le nom doit comporter au moins 3 caractères",
+     *      max=100,
+     *      maxMessage="Le nom peut comporter maximum 100 caractères"
+     * )
      */
     private $lastname;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(
+     *      min=3, 
+     *      minMessage="Le prénom doit comporter au moins 3 caractères",
+     *      max=100,
+     *      maxMessage="Le prénom peut comporter maximum 100 caractères"
+     * )
      */
     private $firstname;
 
     /**
      * @ORM\Column(type="date")
+     * @Assert\LessThanOrEqual("-18 years", message="L'agent doit être majeur")
      */
     private $date_of_birth;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(
+     *      min=6, 
+     *      minMessage="Le prénom doit comporter au moins 6 caractères"
+     * )
      */
     private $id_code;
 
