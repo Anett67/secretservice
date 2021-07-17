@@ -7,9 +7,11 @@ use App\Repository\MissionRepository;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass=MissionRepository::class)
+ * @UniqueEntity("code_name", message="Une mission avec ce code existe déjà")
  */
 class Mission
 {
@@ -22,6 +24,12 @@ class Mission
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(
+     *      min=5, 
+     *      minMessage="Le titre doit comporter au moins 3 caractères",
+     *      max=255,
+     *      maxMessage="Le titre peut comporter maximum 255 caractères"
+     * )
      */
     private $title;
 
@@ -51,16 +59,19 @@ class Mission
 
     /**
      * @ORM\ManyToOne(targetEntity=MissionType::class, inversedBy="missions")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $type;
 
     /**
      * @ORM\ManyToOne(targetEntity=MissionStatus::class, inversedBy="missions")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $status;
 
     /**
      * @ORM\ManyToOne(targetEntity=Specialty::class, inversedBy="missions")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $specialty;
 
@@ -86,6 +97,7 @@ class Mission
 
     /**
      * @ORM\Column(type="datetime")
+     * @Assert\LessThanOrEqual(propertyPath="end_date", message="La date de début ne peut pas être supérieur à la date de fin")
      */
     private $start_date;
 
