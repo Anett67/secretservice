@@ -34,7 +34,7 @@
                         <form method="POST" style="display:inline-block" action="{{ path('user_delete', {'id': user.id}) }}">
                             <input type="hidden" name="_method" value="delete">
                             <input type="hidden" name="_token" value="{{ csrf_token('SUP' ~ user.id) }}">
-                            <button type="submit" class="btn" onclick="return confirm('Confirmer la suppression?')"><i class='text-danger fa fa-times'></i></button>
+                            <button type="submit" class="btn" onclick="return confirm('Confirmer la suppression?')"><i class='delete-icon text-danger fa fa-times'></i></button>
                         </form>
                     </td>
                 </tr>

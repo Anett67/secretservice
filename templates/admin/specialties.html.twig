@@ -29,7 +29,7 @@
                                 <a href="{{ path('specialty_edit', {'id': specialty.id }) }}"><i class="text-warning fa fa-edit"></i></a>
                                 <form method="POST" style="display:inline-block" action="{{ path('specialty_delete', {'id': specialty.id}) }}">
                                     <input type="hidden" name="_token" value="{{ csrf_token('SUP' ~ specialty.id) }}">
-                                    <button type="submit" class="btn" onclick="return confirm('Confirmer la suppression?')"><i class='text-danger fa fa-times'></i></button>
+                                    <button type="submit" class="btn" onclick="return confirm('Confirmer la suppression?')"><i class='delete-icon text-danger fa fa-times'></i></button>
                                 </form>
                             </td>
                         </tr>

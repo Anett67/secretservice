@@ -58,7 +58,7 @@
                         <form method="POST" style="display:inline-block" action="{{ path('mission_delete', {'id': mission.id}) }}">
                             <input type="hidden" name="_method" value="delete">
                             <input type="hidden" name="_token" value="{{ csrf_token('SUP' ~ mission.id) }}">
-                            <button type="submit" class="btn" onclick="return confirm('Confirmer la suppression?')"><i class='text-danger fa fa-times'></i></button>
+                            <button type="submit" class="btn" onclick="return confirm('Confirmer la suppression?')"><i class='delete-icon text-danger fa fa-times'></i></button>
                         </form>
                     </td>
                 </tr>
@@ -91,7 +91,7 @@
                                 <form method="POST" style="display:inline-block" action="{{ path('mission_type_delete', {'id': type.id}) }}">
                                     <input type="hidden" name="_method" value="delete">
                                     <input type="hidden" name="_token" value="{{ csrf_token('SUP' ~ type.id) }}">
-                                    <button type="submit" class="btn" onclick="return confirm('Confirmer la suppression?')"><i class='text-danger fa fa-times'></i></button>
+                                    <button type="submit" class="btn" onclick="return confirm('Confirmer la suppression?')"><i class='delete-icon text-danger fa fa-times'></i></button>
                                 </form>
                             </td>
                         </tr>
@@ -123,7 +123,7 @@
                                 <form method="POST" style="display:inline-block" action="{{ path('mission_status_delete', {'id': status.id}) }}">
                                     <input type="hidden" name="_method" value="delete">
                                     <input type="hidden" name="_token" value="{{ csrf_token('SUP' ~ status.id) }}">
-                                    <button type="submit" class="btn" onclick="return confirm('Confirmer la suppression?')"><i class='text-danger fa fa-times'></i></button>
+                                    <button type="submit" class="btn" onclick="return confirm('Confirmer la suppression?')"><i class='delete-icon text-danger fa fa-times'></i></button>
                                 </form>
                             </td>
                         </tr>

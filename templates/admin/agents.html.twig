@@ -41,7 +41,7 @@
                         <form method="POST" style="display:inline-block" action="{{ path('agent_delete', {'id': agent.id}) }}">
                             <input type="hidden" name="_method" value="delete">
                             <input type="hidden" name="_token" value="{{ csrf_token('SUP' ~ agent.id) }}">
-                            <button type="submit" class="btn" onclick="return confirm('Confirmer la suppression?')"><i class='text-danger fa fa-times'></i></button>
+                            <button type="submit" class="btn" onclick="return confirm('Confirmer la suppression?')"><i class='delete-icon text-danger fa fa-times'></i></button>
                         </form>
                     </td>
                 </tr>
