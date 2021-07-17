@@ -17,6 +17,7 @@ class HideoutCrudController extends AbstractController
     /**
      * @Route("admin/planque/creation", name="hideout_create")
      * @Route("admin/planque/{id}", name="hideout_edit", methods="GET|POST")
+     * @IsGranted("ROLE_ADMIN")
      */
     public function hideout_create_edit(Hideout $hideout = null, Request $request, EntityManagerInterface $manager): Response
     {
@@ -46,8 +47,25 @@ class HideoutCrudController extends AbstractController
     }
 
     /**
+     * @Route("/admin/hideout/{id}", name="hideout_delete", methods="delete")
+     * @IsGranted("ROLE_ADMIN")
+     */
+    public function hideout_delete(Hideout $hideout, Request $request, EntityManagerInterface $entitymanager){
+
+        if($this->isCsrfTokenValid('SUP' . $hideout->getId(), $request->get('_token'))){
+            
+            $entitymanager->remove($hideout);
+            $entitymanager->flush();
+            $this->addFlash("success", "La suppression a été effectuée");
+            return $this->redirectToRoute('admin_hideouts');
+
+        }
+    }
+
+    /**
      * @Route("admin/planque-type/creation", name="hideout_type_create")
      * @Route("admin/planque-type/{id}", name="hideout_type_edit", methods="GET|POST")
+     * @IsGranted("ROLE_ADMIN")
      */
     public function hideout_type_create_edit(HideoutType $hideout_type = null , Request $request, EntityManagerInterface $manager): Response
     {
@@ -75,5 +93,21 @@ class HideoutCrudController extends AbstractController
             'form' => $form->createView(),
             'edit' => $hideout_type->getId() !== null
         ]);
+    }
+
+    /**
+     * @Route("/admin/hideout-type/{id}", name="hideout_type_delete", methods="delete")
+     * @IsGranted("ROLE_ADMIN")
+     */
+    public function hideout_type_delete(HideoutType $hideout_type, Request $request, EntityManagerInterface $entitymanager){
+
+        if($this->isCsrfTokenValid('SUP' . $hideout_type->getId(), $request->get('_token'))){
+            
+            $entitymanager->remove($hideout_type);
+            $entitymanager->flush();
+            $this->addFlash("success", "La suppression a été effectuée");
+            return $this->redirectToRoute('admin_hideouts');
+
+        }
     }
 }

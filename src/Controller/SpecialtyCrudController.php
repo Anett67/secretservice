@@ -15,6 +15,7 @@ class SpecialtyCrudController extends AbstractController
     /**
      * @Route("admin/specialite/creation", name="specialty_create")
      * @Route("admin/specialite/{id}", name="specialty_edit", methods="GET|POST")
+     * @IsGranted("ROLE_ADMIN")
      */
     public function specialty_create_edit(Specialty $specialty = null, Request $request, EntityManagerInterface $manager): Response
     {
@@ -42,5 +43,21 @@ class SpecialtyCrudController extends AbstractController
             'form' => $form->createView(),
             'edit' => $specialty->getId() !== null
         ]);
+    }
+
+    /**
+     * @Route("/admin/specialty/{id}", name="specialty_delete", methods="delete")
+     * @IsGranted("ROLE_ADMIN")
+     */
+    public function specialty_delete(Specialty $specialty, Request $request, EntityManagerInterface $entitymanager){
+
+        if($this->isCsrfTokenValid('SUP' . $specialty->getId(), $request->get('_token'))){
+            
+            $entitymanager->remove($specialty);
+            $entitymanager->flush();
+            $this->addFlash("success", "La suppression a été effectuée");
+            return $this->redirectToRoute('admin_specialties');
+
+        }
     }
 }

@@ -15,6 +15,7 @@ class AgentCrudController extends AbstractController
     /**
      * @Route("admin/agent/creation", name="agent_create")
      * @Route("admin/agent/{id}", name="agent_edit", methods="GET|POST")
+     * @IsGranted("ROLE_ADMIN")
      */
     public function agent_create_edit(Agent $agent=null, Request $request, EntityManagerInterface $manager): Response
     {
@@ -42,5 +43,21 @@ class AgentCrudController extends AbstractController
             'form' => $form->createView(),
             'edit' => $agent->getId() !== null
         ]);
+    }
+
+    /**
+     * @Route("/admin/agent/{id}", name="agent_delete", methods="delete")
+     * @IsGranted("ROLE_ADMIN")
+     */
+    public function agent_delete(Agent $agent, Request $request, EntityManagerInterface $entitymanager){
+
+        if($this->isCsrfTokenValid('SUP' . $agent->getId(), $request->get('_token'))){
+            
+            $entitymanager->remove($agent);
+            $entitymanager->flush();
+            $this->addFlash("success",  "La suppression a été effectuée");
+            return $this->redirectToRoute('admin_agents');
+
+        }
     }
 }

@@ -15,6 +15,7 @@ class TargetCrudController extends AbstractController
     /**
      * @Route("admin/cible/creation", name="target_create")
      * @Route("admin/cible/{id}", name="target_edit", methods="GET|POST")
+     * @IsGranted("ROLE_ADMIN")
      */
     public function target_create_edit(Target $target = null, Request $request, EntityManagerInterface $manager): Response
     {
@@ -42,5 +43,21 @@ class TargetCrudController extends AbstractController
             'form' => $form->createView(),
             'edit' => $target->getId() !== null
         ]);
+    }
+
+    /**
+     * @Route("/admin/target/{id}", name="target_delete", methods="delete")
+     * @IsGranted("ROLE_ADMIN")
+     */
+    public function target_delete(Target $target, Request $request, EntityManagerInterface $entitymanager){
+
+        if($this->isCsrfTokenValid('SUP' . $target->getId(), $request->get('_token'))){
+            
+            $entitymanager->remove($target);
+            $entitymanager->flush();
+            $this->addFlash("success", "La suppression a été effectuée");
+            return $this->redirectToRoute('admin_targets');
+
+        }
     }
 }

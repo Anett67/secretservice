@@ -15,6 +15,7 @@ class ContactCrudController extends AbstractController
     /**
      * @Route("admin/contact/creation", name="contact_create")
      * @Route("admin/contact/{id}", name="contact_edit", methods="GET|POST")
+     * @IsGranted("ROLE_ADMIN")
      */
     public function contact_create_edit(Contact $contact = null ,Request $request, EntityManagerInterface $manager): Response
     {
@@ -42,5 +43,21 @@ class ContactCrudController extends AbstractController
             'form' => $form->createView(),
             'edit' => $contact->getId() !== null
         ]);
+    }
+
+    /**
+     * @Route("/admin/contact/{id}", name="contact_delete", methods="delete")
+     * @IsGranted("ROLE_ADMIN")
+     */
+    public function contact_delete(Contact $contact, Request $request, EntityManagerInterface $entitymanager){
+
+        if($this->isCsrfTokenValid('SUP' . $contact->getId(), $request->get('_token'))){
+            
+            $entitymanager->remove($contact);
+            $entitymanager->flush();
+            $this->addFlash("success", "La suppression a été effectuée");
+            return $this->redirectToRoute('admin_contacts');
+
+        }
     }
 }

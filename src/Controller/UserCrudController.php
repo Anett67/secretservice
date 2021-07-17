@@ -16,6 +16,7 @@ class UserCrudController extends AbstractController
     /**
      * @Route("admin/administrateur/creation", name="user_create")
      * @Route("admin/administrateur/{id}", name="user_edit", methods="GET|POST")
+     * @IsGranted("ROLE_ADMIN")
      */
     public function user_create_edit(User $user = null, Request $request, EntityManagerInterface $manager): Response
     {
@@ -42,5 +43,21 @@ class UserCrudController extends AbstractController
             'form' => $form->createView(),
             'edit' => $user->getId() !== null
         ]);
+    }
+
+    /**
+     * @Route("/admin/administrator/{id}", name="user_delete", methods="delete")
+     * @IsGranted("ROLE_ADMIN")
+     */
+    public function user_delete(User $user, Request $request, EntityManagerInterface $entitymanager){
+
+        if($this->isCsrfTokenValid('SUP' . $user->getId(), $request->get('_token'))){
+            
+            $entitymanager->remove($user);
+            $entitymanager->flush();
+            $this->addFlash("success", "La suppression a été effectuée");
+            return $this->redirectToRoute('admin_users');
+
+        }
     }
 }

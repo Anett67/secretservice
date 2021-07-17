@@ -16,6 +16,7 @@ class CountryCrudController extends AbstractController
     /**
      * @Route("admin/pays/creation", name="country_create")
      * @Route("admin/pays/{id}", name="country_edit", methods="GET|POST")
+     * @IsGranted("ROLE_ADMIN")
      */
     public function country_create_edit(Country $country = null, Request $request, EntityManagerInterface $manager): Response
     { 
@@ -43,5 +44,21 @@ class CountryCrudController extends AbstractController
             'form' => $form->createView(),
             'edit' => $country->getId() !== null
         ]);
+    }
+
+    /**
+     * @Route("/admin/country/{id}", name="country_delete", methods="delete")
+     * @IsGranted("ROLE_ADMIN")
+     */
+    public function country_delete(Country $country, Request $request, EntityManagerInterface $entitymanager){
+
+        if($this->isCsrfTokenValid('SUP' . $country->getId(), $request->get('_token'))){
+            
+            $entitymanager->remove($country);
+            $entitymanager->flush();
+            $this->addFlash("success", "La suppression a été effectuée");
+            return $this->redirectToRoute('admin_countries');
+
+        }
     }
 }
