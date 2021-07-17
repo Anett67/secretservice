@@ -15,12 +15,15 @@ use Symfony\Component\HttpFoundation\Request;
 class HideoutCrudController extends AbstractController
 {
     /**
-     * @Route("/planque/creation", name="hideout_create")
+     * @Route("admin/planque/creation", name="hideout_create")
+     * @Route("admin/planque/{id}", name="hideout_edit", methods="GET|POST")
      */
-    public function hideout_create_create(Request $request, EntityManagerInterface $manager): Response
+    public function hideout_create_edit(Hideout $hideout = null, Request $request, EntityManagerInterface $manager): Response
     {
-        $hideout = new Hideout();
-
+        if(!$hideout){
+            $hideout = new Hideout();
+        }
+        
         $form = $this->createForm(HideoutsType::class, $hideout);
 
         $form->handleRequest($request);
@@ -33,22 +36,25 @@ class HideoutCrudController extends AbstractController
             $this->addFlash('success', 'Une nouvelle planque a été ajouté avec succès');
 
             return $this->redirectToRoute('admin_hideouts');
-
         }
 
         return $this->render('hideout_crud/hideout_create.html.twig', [
             'title' => 'Planques',
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'edit' => $hideout->getId() !== null
         ]);
     }
 
     /**
-     * @Route("/planque-type/creation", name="hideout_type_create")
+     * @Route("admin/planque-type/creation", name="hideout_type_create")
+     * @Route("admin/planque-type/{id}", name="hideout_type_edit", methods="GET|POST")
      */
-    public function hideout_type_create(Request $request, EntityManagerInterface $manager): Response
+    public function hideout_type_create_edit(HideoutType $hideout_type = null , Request $request, EntityManagerInterface $manager): Response
     {
-        $hideout_type = new HideoutType();
-
+        if(!$hideout_type){
+            $hideout_type = new HideoutType();
+        }
+        
         $form = $this->createForm(HideoutTypeType::class, $hideout_type);
 
         $form->handleRequest($request);
@@ -66,7 +72,8 @@ class HideoutCrudController extends AbstractController
 
         return $this->render('hideout_crud/hideout_type_create.html.twig', [
             'title' => 'Planques',
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'edit' => $hideout_type->getId() !== null
         ]);
     }
 }

@@ -13,12 +13,15 @@ use Symfony\Component\Routing\Annotation\Route;
 class TargetCrudController extends AbstractController
 {
     /**
-     * @Route("/cible/creation", name="target_create")
+     * @Route("admin/cible/creation", name="target_create")
+     * @Route("admin/cible/{id}", name="target_edit", methods="GET|POST")
      */
-    public function target_create(Request $request, EntityManagerInterface $manager): Response
+    public function target_create_edit(Target $target = null, Request $request, EntityManagerInterface $manager): Response
     {
-        $target = new Target();
-
+        if(!$target){
+            $target = new Target();
+        }
+        
         $form = $this->createForm(TargetType::class, $target);
 
         $form->handleRequest($request);
@@ -36,7 +39,8 @@ class TargetCrudController extends AbstractController
 
         return $this->render('target_crud/target_create.html.twig', [
             'title' => 'Cibles',
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'edit' => $target->getId() !== null
         ]);
     }
 }

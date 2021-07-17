@@ -13,11 +13,14 @@ use Symfony\Component\Routing\Annotation\Route;
 class ContactCrudController extends AbstractController
 {
     /**
-     * @Route("/contact/creation", name="contact_create")
+     * @Route("admin/contact/creation", name="contact_create")
+     * @Route("admin/contact/{id}", name="contact_edit", methods="GET|POST")
      */
-    public function contact_create(Request $request, EntityManagerInterface $manager): Response
+    public function contact_create_edit(Contact $contact = null ,Request $request, EntityManagerInterface $manager): Response
     {
-        $contact = new Contact();
+        if(!$contact){
+            $contact = new Contact();
+        }
 
         $form =  $this->createForm(ContactType::class, $contact);
 
@@ -36,7 +39,8 @@ class ContactCrudController extends AbstractController
 
         return $this->render('contact_crud/contact_create.html.twig', [
             'title' => 'Contacts',
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'edit' => $contact->getId() !== null
         ]);
     }
 }

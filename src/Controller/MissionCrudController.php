@@ -17,12 +17,15 @@ use Symfony\Component\HttpFoundation\Request;
 class MissionCrudController extends AbstractController
 {
     /**
-     * @Route("/mission/creation", name="mission_create")
+     * @Route("admin/mission/creation", name="mission_create")
+     * @Route("admin/mission/{id}", name="mission_edit", methods="GET|POST")
      */
-    public function mission_create(Request $request, EntityManagerInterface $manager): Response
+    public function mission_create_edit(Mission $mission = null, Request $request, EntityManagerInterface $manager): Response
     {
-        $mission = new Mission();
-
+        if(!$mission){
+            $mission = new Mission();
+        }
+        
         $form = $this->createForm(MissionsType::class, $mission);
 
         $form->handleRequest($request);
@@ -40,16 +43,20 @@ class MissionCrudController extends AbstractController
 
         return $this->render('mission_crud/mission_create.html.twig', [
             'title' => 'Missions',
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'edit' => $mission->getId() !== null
         ]);
     }
 
     /**
-     * @Route("/mission-type/creation", name="mission_type_create")
+     * @Route("admin/mission-type/creation", name="mission_type_create")
+     * @Route("admin/mission-type/{id}", name="mission_type_edit", methods="GET|POST")
      */
-    public function mission_type_create(Request $request, EntityManagerInterface $manager): Response
+    public function mission_type_create_edit(MissionType $mission_type = null, Request $request, EntityManagerInterface $manager): Response
     {
-        $mission_type = new MissionType();
+        if(!$mission_type){
+            $mission_type = new MissionType();
+        }
 
         $form = $this->createForm(MissionTypeType::class, $mission_type);
 
@@ -67,17 +74,21 @@ class MissionCrudController extends AbstractController
 
         return $this->render('mission_crud/mission_type_create.html.twig', [
             'title' => 'Missions',
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'edit'=> $mission_type->getId() !== null
         ]);
     }
 
     /**
-     * @Route("/mission-status/creation", name="mission_status_create")
+     * @Route("admin/mission-status/creation", name="mission_status_create")
+     * @Route("admin/mission-status/{id}", name="mission_status_edit", methods="GET|POST")
      */
-    public function mission_status_create(Request $request, EntityManagerInterface $manager): Response
+    public function mission_status_create_edit(MissionStatus $mission_status = null, Request $request, EntityManagerInterface $manager): Response
     {
-        $mission_status = new MissionStatus();
-
+        if(!$mission_status){
+            $mission_status = new MissionStatus();
+        }
+        
         $form = $this->createForm(MissionStatusType::class, $mission_status);
 
         $form->handleRequest($request);
@@ -94,7 +105,8 @@ class MissionCrudController extends AbstractController
 
         return $this->render('mission_crud/mission_status_create.html.twig', [
             'title' => 'Missions',
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'edit' => $mission_status->getId() !== null
         ]);
     }
 }

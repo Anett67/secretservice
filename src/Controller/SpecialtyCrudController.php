@@ -13,12 +13,15 @@ use Symfony\Component\Routing\Annotation\Route;
 class SpecialtyCrudController extends AbstractController
 {
     /**
-     * @Route("/specialite/creation", name="specialty_create")
+     * @Route("admin/specialite/creation", name="specialty_create")
+     * @Route("admin/specialite/{id}", name="specialty_edit", methods="GET|POST")
      */
-    public function specialty_create(Request $request, EntityManagerInterface $manager): Response
+    public function specialty_create_edit(Specialty $specialty = null, Request $request, EntityManagerInterface $manager): Response
     {
-        $specialty = new Specialty();
-
+        if(!$specialty){
+            $specialty = new Specialty();
+        }
+        
         $form = $this->createForm(SpecialtyType::class, $specialty);
 
         $form->handleRequest($request);
@@ -36,7 +39,8 @@ class SpecialtyCrudController extends AbstractController
 
         return $this->render('specialty_crud/specialty_create.html.twig', [
             'title' => 'Spécialité',
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'edit' => $specialty->getId() !== null
         ]);
     }
 }

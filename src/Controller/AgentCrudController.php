@@ -13,12 +13,15 @@ use Symfony\Component\Routing\Annotation\Route;
 class AgentCrudController extends AbstractController
 {
     /**
-     * @Route("/agent/creation", name="agent_create")
+     * @Route("admin/agent/creation", name="agent_create")
+     * @Route("admin/agent/{id}", name="agent_edit", methods="GET|POST")
      */
-    public function agent_create(Request $request, EntityManagerInterface $manager): Response
+    public function agent_create_edit(Agent $agent=null, Request $request, EntityManagerInterface $manager): Response
     {
-        $agent = new Agent();
-
+        if(!$agent){
+            $agent = new Agent();
+        }
+        
         $form = $this->createForm(AgentType::class, $agent);
 
         $form->handleRequest($request);
@@ -36,7 +39,8 @@ class AgentCrudController extends AbstractController
 
         return $this->render('agent_crud/agent_create.html.twig', [
             'title' => 'Agents',
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'edit' => $agent->getId() !== null
         ]);
     }
 }

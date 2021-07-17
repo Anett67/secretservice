@@ -14,11 +14,14 @@ use Symfony\Component\Routing\Annotation\Route;
 class CountryCrudController extends AbstractController
 {
     /**
-     * @Route("/pays/creation", name="country_create")
+     * @Route("admin/pays/creation", name="country_create")
+     * @Route("admin/pays/{id}", name="country_edit", methods="GET|POST")
      */
-    public function country_create(Request $request, EntityManagerInterface $manager): Response
-    {
-        $country = new Country();
+    public function country_create_edit(Country $country = null, Request $request, EntityManagerInterface $manager): Response
+    { 
+        if(!$country){
+            $country = new Country();
+        }
 
         $form = $this->createForm(CountryType::class, $country);
 
@@ -37,7 +40,8 @@ class CountryCrudController extends AbstractController
 
         return $this->render('country_crud/country_create.html.twig', [
             'title' => 'Pays',
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'edit' => $country->getId() !== null
         ]);
     }
 }
