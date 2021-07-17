@@ -30,10 +30,12 @@ class TargetCrudController extends AbstractController
 
         if($form->isSubmitted() && $form->isValid()){
 
+            $target_exists = $target->getId();
+
             $manager->persist($target);
             $manager->flush();
 
-            $this->addFlash('success', ($target->getId()) ? 'La modification a bien été effectuée.' : 'Un nouveau cible a été ajouté avec succès');
+            $this->addFlash('success', ($target_exists) ? 'La modification a bien été effectuée.' : 'Un nouveau cible a été ajouté avec succès');
 
             return $this->redirectToRoute('admin_targets');
 

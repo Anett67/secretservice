@@ -32,10 +32,12 @@ class HideoutCrudController extends AbstractController
 
         if($form->isSubmitted() && $form->isValid()){
 
+            $hideout_exists = $hideout->getId();
+
             $manager->persist($hideout);
             $manager->flush();
 
-            $this->addFlash('success', ($hideout->getId()) ? 'La modification a bien été effectuée.' : 'Une nouvelle planque a été ajouté avec succès');
+            $this->addFlash('success', ($hideout_exists) ? 'La modification a bien été effectuée.' : 'Une nouvelle planque a été ajouté avec succès');
 
             return $this->redirectToRoute('admin_hideouts');
         }
@@ -80,10 +82,12 @@ class HideoutCrudController extends AbstractController
 
         if($form->isSubmitted() && $form->isValid()){
 
+            $hideout_type_exists = $hideout_type->getId();
+
             $manager->persist($hideout_type);
             $manager->flush();
 
-            $this->addFlash('success', ($hideout_type->getId()) ? 'La modification a bien été effectuée.' : 'Un nouveau type de planque a été ajouté avec succès');
+            $this->addFlash('success', ($hideout_type_exists) ? 'La modification a bien été effectuée.' : 'Un nouveau type de planque a été ajouté avec succès');
 
             return $this->redirectToRoute('admin_hideouts');
 

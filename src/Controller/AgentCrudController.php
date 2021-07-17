@@ -30,10 +30,12 @@ class AgentCrudController extends AbstractController
 
         if($form->isSubmitted() && $form->isValid()){
 
+            $agent_exists = $agent->getId();
+
             $manager->persist($agent);
             $manager->flush();
 
-            $this->addFlash('success', ($agent->getId()) ? 'La modification a bien été effectuée.' : 'Un nouvel agent a été ajouté avec succès');
+            $this->addFlash('success', ($agent_exists) ? 'La modification a bien été effectuée.' : 'Un nouvel agent a été ajouté avec succès');
 
             return $this->redirectToRoute('admin_agents');
 

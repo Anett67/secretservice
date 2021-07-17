@@ -30,10 +30,12 @@ class SpecialtyCrudController extends AbstractController
 
         if($form->isSubmitted() && $form->isValid()){
 
+            $specialty_exists = $specialty->getId();
+
             $manager->persist($specialty);
             $manager->flush();
 
-            $this->addFlash('success', ($specialty->getId()) ? 'La modification a bien été effectuée.' : 'Une nouvelle spécialité a été ajouté avec succès');
+            $this->addFlash('success', ($specialty_exists) ? 'La modification a bien été effectuée.' : 'Une nouvelle spécialité a été ajouté avec succès');
 
             return $this->redirectToRoute('admin_specialties');
 

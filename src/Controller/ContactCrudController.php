@@ -30,10 +30,12 @@ class ContactCrudController extends AbstractController
 
         if($form->isSubmitted() && $form->isValid()){
 
+            $contact_exists = $contact->getId();
+
             $manager->persist($contact);
             $manager->flush();
 
-            $this->addFlash('success', ($contact->getId()) ? 'La modification a bien été effectuée.' : 'Un nouveau contact a été ajouté avec succès');
+            $this->addFlash('success', ($contact_exists) ? 'La modification a bien été effectuée.' : 'Un nouveau contact a été ajouté avec succès');
 
             return $this->redirectToRoute('admin_contacts');
 
