@@ -30,7 +30,9 @@
                     <td>{{ user.roles|join(', ') }}
                     </td>
                     <td>
-                        <a href="{{ path('user_edit', {'id': user.id }) }}"><i class="text-warning fa fa-edit"></i></a>
+                        <button class="btn">
+                            <a href="{{ path('user_edit', {'id': user.id }) }}"><i class="text-warning fa fa-edit"></i></a>
+                        </button>
                         <form id="delete-form" method="POST" style="display:inline-block" action="{{ path('user_delete', {'id': user.id}) }}">
                             <input type="hidden" name="_method" value="delete">
                             <input type="hidden" name="_token" value="{{ csrf_token('SUP' ~ user.id) }}">

@@ -27,7 +27,9 @@
                     <td>{{ hideout.country.name }}</td>
                     <td>{{ hideout.type.name }}</td>
                     <td>
-                        <a href="{{ path('hideout_edit', {'id': hideout.id }) }}"><i class="text-warning fa fa-edit"></i></a>
+                        <button class="btn">
+                            <a href="{{ path('hideout_edit', {'id': hideout.id }) }}"><i class="text-warning fa fa-edit"></i></a>
+                        </button>
                         <form id="delete-form" method="POST" style="display:inline-block" action="{{ path('hideout_delete', {'id': hideout.id}) }}">
                             <input type="hidden" name="_method" value="delete">
                             <input type="hidden" name="_token" value="{{ csrf_token('SUP' ~ hideout.id) }}">
@@ -60,7 +62,9 @@
                             <td>{{ type.id }}</td>
                             <td>{{ type.name }}</td>
                             <td>
-                                <a href="{{ path('hideout_type_edit', {'id': type.id }) }}"><i class="text-warning fa fa-edit"></i></a>
+                                <button class="btn">
+                                    <a href="{{ path('hideout_type_edit', {'id': type.id }) }}"><i class="text-warning fa fa-edit"></i></a>
+                                </button>
                                 <form id="delete-form" method="POST" style="display:inline-block" action="{{ path('hideout_type_delete', {'id': type.id}) }}">
                                     <input type="hidden" name="_method" value="delete">
                                     <input type="hidden" name="_token" value="{{ csrf_token('SUP' ~ type.id) }}">
