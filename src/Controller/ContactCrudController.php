@@ -47,7 +47,7 @@ class ContactCrudController extends AbstractController
     }
 
     /**
-     * @Route("/admin/contact/{id}", name="contact_delete", methods="delete")
+     * @Route("/admin/contact/delete/{id}", name="contact_delete", methods="POST")
      * @IsGranted("ROLE_ADMIN")
      */
     public function contact_delete(Contact $contact, Request $request, EntityManagerInterface $entitymanager){

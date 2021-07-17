@@ -47,7 +47,7 @@ class AgentCrudController extends AbstractController
     }
 
     /**
-     * @Route("/admin/agent/{id}", name="agent_delete", methods="delete")
+     * @Route("/admin/agent/delete/{id}", name="agent_delete", methods="POST")
      * @IsGranted("ROLE_ADMIN")
      */
     public function agent_delete(Agent $agent, Request $request, EntityManagerInterface $entitymanager){

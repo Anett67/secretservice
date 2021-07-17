@@ -48,7 +48,7 @@ class HideoutCrudController extends AbstractController
     }
 
     /**
-     * @Route("/admin/hideout/{id}", name="hideout_delete", methods="delete")
+     * @Route("/admin/hideout/delete/{id}", name="hideout_delete", methods="POST")
      * @IsGranted("ROLE_ADMIN")
      */
     public function hideout_delete(Hideout $hideout, Request $request, EntityManagerInterface $entitymanager){
@@ -97,7 +97,7 @@ class HideoutCrudController extends AbstractController
     }
 
     /**
-     * @Route("/admin/hideout-type/{id}", name="hideout_type_delete", methods="delete")
+     * @Route("/admin/hideout-type/delete/{id}", name="hideout_type_delete", methods="POST")
      * @IsGranted("ROLE_ADMIN")
      */
     public function hideout_type_delete(HideoutType $hideout_type, Request $request, EntityManagerInterface $entitymanager){

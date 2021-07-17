@@ -30,7 +30,11 @@
                             <td>{{ country.nationality }}</td>
                             <td>
                                 <a href="{{ path('country_edit', {'id': country.id }) }}"><i class="text-warning fa fa-edit"></i></a>
-                                <a href=""><i class="text-danger fa fa-times"></i></a>
+                                <form method="POST" style="display:inline-block" action="{{ path('country_delete', {'id': country.id}) }}">
+                                    <input type="hidden" name="_method" value="delete">
+                                    <input type="hidden" name="_token" value="{{ csrf_token('SUP' ~ country.id) }}">
+                                <button type="submit" class="btn" onclick="return confirm('Confirmer la suppression?')"><i class='text-danger fa fa-times'></i></button>
+                            </form>
                             </td>
                         </tr>
                     {% endfor %}

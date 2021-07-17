@@ -28,7 +28,11 @@
                     <td>{{ hideout.type.name }}</td>
                     <td>
                         <a href="{{ path('hideout_edit', {'id': hideout.id }) }}"><i class="text-warning fa fa-edit"></i></a>
-                        <a href=""><i class="text-danger fa fa-times"></i></a>
+                        <form method="POST" style="display:inline-block" action="{{ path('hideout_delete', {'id': hideout.id}) }}">
+                            <input type="hidden" name="_method" value="delete">
+                            <input type="hidden" name="_token" value="{{ csrf_token('SUP' ~ hideout.id) }}">
+                            <button type="submit" class="btn" onclick="return confirm('Confirmer la suppression?')"><i class='text-danger fa fa-times'></i></button>
+                        </form>
                     </td>
                 </tr>
             {% endfor %}
@@ -57,7 +61,11 @@
                             <td>{{ type.name }}</td>
                             <td>
                                 <a href="{{ path('hideout_type_edit', {'id': type.id }) }}"><i class="text-warning fa fa-edit"></i></a>
-                                <a href=""><i class="text-danger fa fa-times"></i></a>
+                                <form method="POST" style="display:inline-block" action="{{ path('hideout_type_delete', {'id': type.id}) }}">
+                                    <input type="hidden" name="_method" value="delete">
+                                    <input type="hidden" name="_token" value="{{ csrf_token('SUP' ~ type.id) }}">
+                                    <button type="submit" class="btn" onclick="return confirm('Confirmer la suppression?')"><i class='text-danger fa fa-times'></i></button>
+                                </form>
                             </td>
                         </tr>
                     {% endfor %}

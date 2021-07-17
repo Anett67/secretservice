@@ -51,7 +51,7 @@ class MissionCrudController extends AbstractController
     }
 
     /**
-     * @Route("/admin/mission/{id}", name="mission_delete", methods="delete")
+     * @Route("/admin/mission/delete/{id}", name="mission_delete", methods="POST")
      * @IsGranted("ROLE_ADMIN")
      */
     public function mission_delete(Mission $mission, Request $request, EntityManagerInterface $entitymanager){
@@ -64,6 +64,8 @@ class MissionCrudController extends AbstractController
             return $this->redirectToRoute('admin');
 
         }
+
+        dd('delete');
     }
 
     /**
@@ -99,7 +101,7 @@ class MissionCrudController extends AbstractController
     }
 
     /**
-     * @Route("/admin/mission-type/{id}", name="mission_type_delete", methods="delete")
+     * @Route("/admin/mission-type/delete/{id}", name="mission_type_delete", methods="POST")
      * @IsGranted("ROLE_ADMIN")
      */
     public function mission_type_delete(MissionType $mission_type, Request $request, EntityManagerInterface $entitymanager){
@@ -112,6 +114,7 @@ class MissionCrudController extends AbstractController
             return $this->redirectToRoute('admin');
 
         }
+
     }
 
     /**
@@ -147,7 +150,7 @@ class MissionCrudController extends AbstractController
     }
 
     /**
-     * @Route("/admin/mission-status/{id}", name="mission_status_delete", methods="delete")
+     * @Route("/admin/mission-status/delete/{id}", name="mission_status_delete", methods="POST")
      * @IsGranted("ROLE_ADMIN")
      */
     public function mission_status_delete(MissionStatus $mission_status, Request $request, EntityManagerInterface $entitymanager){

@@ -47,7 +47,7 @@ class TargetCrudController extends AbstractController
     }
 
     /**
-     * @Route("/admin/target/{id}", name="target_delete", methods="delete")
+     * @Route("/admin/target/delete/{id}", name="target_delete", methods="POST")
      * @IsGranted("ROLE_ADMIN")
      */
     public function target_delete(Target $target, Request $request, EntityManagerInterface $entitymanager){

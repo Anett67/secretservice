@@ -46,7 +46,7 @@ class UserCrudController extends AbstractController
     }
 
     /**
-     * @Route("/admin/administrator/{id}", name="user_delete", methods="delete")
+     * @Route("/admin/administrator/delete/{id}", name="user_delete", methods="POST")
      * @IsGranted("ROLE_ADMIN")
      */
     public function user_delete(User $user, Request $request, EntityManagerInterface $entitymanager){

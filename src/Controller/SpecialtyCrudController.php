@@ -47,7 +47,7 @@ class SpecialtyCrudController extends AbstractController
     }
 
     /**
-     * @Route("/admin/specialty/{id}", name="specialty_delete", methods="delete")
+     * @Route("/admin/specialty/delete/{id}", name="specialty_delete", methods="POST")
      * @IsGranted("ROLE_ADMIN")
      */
     public function specialty_delete(Specialty $specialty, Request $request, EntityManagerInterface $entitymanager){

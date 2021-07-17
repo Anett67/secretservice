@@ -48,7 +48,7 @@ class CountryCrudController extends AbstractController
     }
 
     /**
-     * @Route("/admin/country/{id}", name="country_delete", methods="delete")
+     * @Route("/admin/country/delete/{id}", name="country_delete", methods="POST")
      * @IsGranted("ROLE_ADMIN")
      */
     public function country_delete(Country $country, Request $request, EntityManagerInterface $entitymanager){
