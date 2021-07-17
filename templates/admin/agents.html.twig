@@ -38,7 +38,7 @@
                     </td>
                     <td>
                         <a href="{{ path('agent_edit', {'id': agent.id }) }}"><i class="text-warning fa fa-edit"></i></a>
-                        <form method="POST" style="display:inline-block" action="{{ path('agent_delete', {'id': agent.id}) }}">
+                        <form id="delete-form" method="POST" style="display:inline-block" action="{{ path('agent_delete', {'id': agent.id}) }}">
                             <input type="hidden" name="_method" value="delete">
                             <input type="hidden" name="_token" value="{{ csrf_token('SUP' ~ agent.id) }}">
                             <button type="submit" class="btn" onclick="return confirm('Confirmer la suppression?')"><i class='delete-icon text-danger fa fa-times'></i></button>

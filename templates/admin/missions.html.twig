@@ -55,7 +55,7 @@
                     <td>{{ mission.status.name }}</td>
                     <td>
                         <a href="{{ path('mission_edit', {'id': mission.id }) }}"><i class="text-warning fa fa-edit"></i></a>
-                        <form method="POST" style="display:inline-block" action="{{ path('mission_delete', {'id': mission.id}) }}">
+                        <form id="delete-form" method="POST" style="display:inline-block" action="{{ path('mission_delete', {'id': mission.id}) }}">
                             <input type="hidden" name="_method" value="delete">
                             <input type="hidden" name="_token" value="{{ csrf_token('SUP' ~ mission.id) }}">
                             <button type="submit" class="btn" onclick="return confirm('Confirmer la suppression?')"><i class='delete-icon text-danger fa fa-times'></i></button>
@@ -88,7 +88,7 @@
                             <td>{{ type.name }}</td>
                             <td>
                                 <a href="{{ path('mission_type_edit', {'id': type.id }) }}"><i class="text-warning fa fa-edit"></i></a>
-                                <form method="POST" style="display:inline-block" action="{{ path('mission_type_delete', {'id': type.id}) }}">
+                                <form id="delete-form" method="POST" style="display:inline-block" action="{{ path('mission_type_delete', {'id': type.id}) }}">
                                     <input type="hidden" name="_method" value="delete">
                                     <input type="hidden" name="_token" value="{{ csrf_token('SUP' ~ type.id) }}">
                                     <button type="submit" class="btn" onclick="return confirm('Confirmer la suppression?')"><i class='delete-icon text-danger fa fa-times'></i></button>
@@ -120,7 +120,7 @@
                             <td>{{ status.name }}</td>
                             <td>
                                 <a href="{{ path('mission_status_edit', {'id': status.id }) }}"><i class="text-warning fa fa-edit"></i></a>
-                                <form method="POST" style="display:inline-block" action="{{ path('mission_status_delete', {'id': status.id}) }}">
+                                <form id="delete-form" method="POST" style="display:inline-block" action="{{ path('mission_status_delete', {'id': status.id}) }}">
                                     <input type="hidden" name="_method" value="delete">
                                     <input type="hidden" name="_token" value="{{ csrf_token('SUP' ~ status.id) }}">
                                     <button type="submit" class="btn" onclick="return confirm('Confirmer la suppression?')"><i class='delete-icon text-danger fa fa-times'></i></button>

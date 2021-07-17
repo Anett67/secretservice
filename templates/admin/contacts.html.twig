@@ -32,7 +32,7 @@
                     <td>{{ contact.nationality.nationality }}</td>
                     <td>
                         <a href="{{ path('contact_edit', {'id': contact.id }) }}"><i class="text-warning fa fa-edit"></i></a>
-                        <form method="POST" style="display:inline-block" action="{{ path('contact_delete', {'id': contact.id}) }}">
+                        <form id="delete-form" method="POST" style="display:inline-block" action="{{ path('contact_delete', {'id': contact.id}) }}">
                             <input type="hidden" name="_method" value="delete">
                             <input type="hidden" name="_token" value="{{ csrf_token('SUP' ~ contact.id) }}">
                             <button type="submit" class="btn" onclick="return confirm('Confirmer la suppression?')"><i class='delete-icon text-danger fa fa-times'></i></button>

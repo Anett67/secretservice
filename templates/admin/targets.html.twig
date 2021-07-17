@@ -32,7 +32,7 @@
                     <td>{{ target.nationality.nationality }}</td>
                     <td>
                         <a href="{{ path('target_edit', {'id': target.id }) }}"><i class="text-warning fa fa-edit"></i></a>
-                        <form method="POST" style="display:inline-block" action="{{ path('target_delete', {'id': target.id}) }}">
+                        <form id="delete-form" method="POST" style="display:inline-block" action="{{ path('target_delete', {'id': target.id}) }}">
                             <input type="hidden" name="_method" value="delete">
                             <input type="hidden" name="_token" value="{{ csrf_token('SUP' ~ target.id) }}">
                             <button type="submit" class="btn" onclick="return confirm('Confirmer la suppression?')"><i class='delete-icon text-danger fa fa-times'></i></button>
