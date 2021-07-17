@@ -2,10 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\MissionRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\MissionRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=MissionRepository::class)
@@ -26,11 +27,19 @@ class Mission
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\Length(
+     *      min=5, 
+     *      minMessage="La description doit comporter au moins 5 caractères"
+     * )
      */
     private $description;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(
+     *      min=6,
+     *      minMessage="Le code doit comporter au moins 6 caractères"
+     * )
      */
     private $code_name;
 
@@ -87,9 +96,9 @@ class Mission
 
     public function __construct()
     {
-        $this->Contact = new ArrayCollection();
-        $this->Target = new ArrayCollection();
-        $this->Hideout = new ArrayCollection();
+        $this->contact = new ArrayCollection();
+        $this->target = new ArrayCollection();
+        $this->hideout = new ArrayCollection();
         $this->agent = new ArrayCollection();
     }
 

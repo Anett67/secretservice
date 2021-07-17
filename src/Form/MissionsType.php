@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Agent;
+use App\Entity\Target;
 use App\Entity\Contact;
 use App\Entity\Country;
 use App\Entity\Hideout;
@@ -10,7 +11,6 @@ use App\Entity\Mission;
 use App\Entity\Specialty;
 use App\Entity\MissionType;
 use App\Entity\MissionStatus;
-use App\Entity\Target;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -27,7 +27,7 @@ class MissionsType extends AbstractType
                 'label' => 'Titre'
             ])
             ->add('description', TextType::class, [
-                'label' => 'Déscription'
+                'label' => 'Description'
             ])
             ->add('code_name', TextType::class, [
                 'label' => 'Code'
