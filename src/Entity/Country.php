@@ -6,9 +6,12 @@ use App\Repository\CountryRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass=CountryRepository::class)
+ * @UniqueEntity("name", message="Un pays avec ce nom existe déjà")
  */
 class Country
 {
@@ -21,6 +24,7 @@ class Country
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Veuillez renseigner le nom du pays")
      */
     private $name;
 
@@ -31,6 +35,7 @@ class Country
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Veuillez renseigner la nationalité du pays")
      */
     private $nationality;
 
