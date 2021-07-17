@@ -32,6 +32,12 @@ class MissionCrudController extends AbstractController
 
         $form->handleRequest($request);
 
+        $mission->check_targets_agents_nationality();
+        $mission->check_contact_nationality();
+        $mission->check_hideout_country();
+        $mission->check_agents_for_specialties();
+
+
         if($form->isSubmitted() && $form->isValid()){
 
             $mission_exists = $mission->getId();
@@ -42,7 +48,6 @@ class MissionCrudController extends AbstractController
             $this->addFlash('success', ($mission_exists) ? 'La modification a bien été effectuée.' : 'Une nouvelle mission a été ajouté avec succès');
 
             return $this->redirectToRoute('admin');
-
         }
 
         return $this->render('mission_crud/mission_create.html.twig', [
