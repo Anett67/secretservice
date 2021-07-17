@@ -6,9 +6,12 @@ use App\Repository\ContactRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass=ContactRepository::class)
+ * @UniqueEntity("code_name", message="Un contact avec ce code existe déjà")
  */
 class Contact
 {
@@ -21,16 +24,29 @@ class Contact
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(
+     *      min=3, 
+     *      minMessage="Le nom doit comporter au moins 3 caractères",
+     *      max=100,
+     *      maxMessage="Le nom peut comporter maximum 100 caractères"
+     * )
      */
     private $lastname;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(
+     *      min=3, 
+     *      minMessage="Le prénom doit comporter au moins 3 caractères",
+     *      max=100,
+     *      maxMessage="Le prénom peut comporter maximum 100 caractères"
+     * )
      */
     private $firstname;
 
     /**
      * @ORM\Column(type="date")
+     * @Assert\LessThanOrEqual("-18 years", message="Le contact doit être majeur")
      */
     private $date_of_birth;
 
