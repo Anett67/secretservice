@@ -3,7 +3,7 @@
 
 {% block body %}
 
-    <h1>Ajouter une mission</h1>
+    <h1>{{ edit ? 'Modifier' : 'Ajouter' }} une mission</h1>
 
     {% include "flashMessages.html.twig" %}
 
