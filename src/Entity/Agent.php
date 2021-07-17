@@ -54,7 +54,7 @@ class Agent
      * @ORM\Column(type="string", length=255)
      * @Assert\Length(
      *      min=6, 
-     *      minMessage="Le prénom doit comporter au moins 6 caractères"
+     *      minMessage="Le code doit comporter au moins 6 caractères"
      * )
      */
     private $id_code;

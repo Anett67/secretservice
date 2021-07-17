@@ -6,9 +6,13 @@ use App\Repository\HideoutRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass=HideoutRepository::class)
+ * @UniqueEntity("code", message="Une planque avec ce code existe déjà")
+ * @UniqueEntity("address", message="Une planque avec cette addresse existe déjà")
  */
 class Hideout
 {
@@ -21,21 +25,31 @@ class Hideout
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(
+     *      min=6, 
+     *      minMessage="Le code doit comporter au moins 6 caractères"
+     * )
      */
     private $code;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(
+     *      min=6, 
+     *      minMessage="L'addresse doit comporter au moins 6 caractères"
+     * )
      */
     private $address;
 
     /**
      * @ORM\ManyToOne(targetEntity=Country::class, inversedBy="hideouts")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $country;
 
     /**
      * @ORM\ManyToOne(targetEntity=HideoutType::class, inversedBy="hideouts")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $type;
 
