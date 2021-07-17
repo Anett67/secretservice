@@ -31,7 +31,7 @@ class AgentCrudController extends AbstractController
             $manager->persist($agent);
             $manager->flush();
 
-            $this->addFlash('success', 'Un nouvel agent a été ajouté avec succès');
+            $this->addFlash('success', ($agent->getId()) ? 'La modification a bien été effectuée.' : 'Un nouvel agent a été ajouté avec succès');
 
             return $this->redirectToRoute('admin_agents');
 

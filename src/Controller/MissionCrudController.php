@@ -35,7 +35,7 @@ class MissionCrudController extends AbstractController
             $manager->persist($mission);
             $manager->flush();
 
-            $this->addFlash('success', 'Une nouvelle mission a été ajouté avec succès');
+            $this->addFlash('success', ($mission->getId()) ? 'La modification a bien été effectuée.' : 'Une nouvelle mission a été ajouté avec succès');
 
             return $this->redirectToRoute('admin');
 
@@ -67,7 +67,7 @@ class MissionCrudController extends AbstractController
             $manager->persist($mission_type);
             $manager->flush();
 
-            $this->addFlash('success', 'Un nouveau type de mission a été ajouté avec succès');
+            $this->addFlash('success', ($mission_type->getId()) ? 'La modification a bien été effectuée.' : 'Un nouveau type de mission a été ajouté avec succès');
 
             return $this->redirectToRoute('admin');
         }
@@ -98,7 +98,7 @@ class MissionCrudController extends AbstractController
             $manager->persist($mission_status);
             $manager->flush();
 
-            $this->addFlash('success', 'Un nouveau status a été ajouté avec succès');
+            $this->addFlash('success', ($mission_status->getId()) ? 'La modification a bien été effectuée.' : 'Un nouveau status a été ajouté avec succès');
 
             return $this->redirectToRoute('admin');
         }

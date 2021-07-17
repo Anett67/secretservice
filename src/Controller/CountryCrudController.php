@@ -32,7 +32,7 @@ class CountryCrudController extends AbstractController
             $manager->persist($country);
             $manager->flush();
 
-            $this->addFlash('success', 'Un nouveau pays a été aujouté avec succès.');
+            $this->addFlash('success', ($country->getId()) ? 'La modification a bien été effectuée.' : 'Un nouveau pays a été aujouté avec succès.');
 
             return $this->redirectToRoute('admin_countries');
 

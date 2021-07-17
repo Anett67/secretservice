@@ -32,7 +32,7 @@ class UserCrudController extends AbstractController
             $manager->persist($user);
             $manager->flush();
 
-            $this->addFlash('success', 'Un administrateur a été ajouté avec succèes');
+            $this->addFlash('success', ($user->getId()) ? 'La modification a bien été effectuée.' : 'Un administrateur a été ajouté avec succèes');
 
             return $this->redirectToRoute('admin_administrators');
         }
