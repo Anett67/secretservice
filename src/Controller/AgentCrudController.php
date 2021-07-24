@@ -56,8 +56,12 @@ class AgentCrudController extends AbstractController
     public function agent_delete(Agent $agent, Request $request, EntityManagerInterface $entitymanager){
 
         if($this->isCsrfTokenValid('SUP' . $agent->getId(), $request->get('_token'))){
-            
-            dd($agent->getMissions());
+
+            if(!$agent->checkIfCanBeDeleted()){
+
+                $this->addFlash('error', 'L\'agent est attaché à une ou plusieurs mission. Modifiez les missions avant de le supprimer.');
+                return $this->redirectToRoute('admin_agents');
+            }
 
             $entitymanager->remove($agent);
             $entitymanager->flush();

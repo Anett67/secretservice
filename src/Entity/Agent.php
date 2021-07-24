@@ -222,4 +222,27 @@ class Agent
         return $specialtyIds;
 
     }
+
+    public function checkIfCanBeDeleted(){
+
+        // If the agent doesn't have any mission he can be deleted
+        if(!count($this->missions)){
+            return true;
+        }
+
+        // If agent has missions we check if there are other agents on the mission with the required specialty
+       foreach($this->missions as $mission){
+
+            $agents = $mission->getAgent();
+
+            foreach($agents as $agent){
+
+                if($agent->getId() !== $this->getId() && in_array($mission->getSpecialty()->getId(), $agent->getSpecialtyIds())){
+                    return true;
+                }
+            }
+       }
+
+        return false;
+    }
 }
