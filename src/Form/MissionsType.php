@@ -16,6 +16,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class MissionsType extends AbstractType
@@ -26,7 +27,7 @@ class MissionsType extends AbstractType
             ->add('title', TextType::class, [
                 'label' => 'Titre'
             ])
-            ->add('description', TextType::class, [
+            ->add('description', TextareaType::class, [
                 'label' => 'Description'
             ])
             ->add('code_name', TextType::class, [
@@ -64,6 +65,9 @@ class MissionsType extends AbstractType
                 'choice_label' => function($contact){
                     return $contact->getFirstname() . ' ' . $contact->getLastName() . ' (' . $contact->getNationality()->getNationality() . ')';
                 },
+                'choice_attr' => function($contact){
+                    return ['country-id' => $contact->getNationality()->getId()];
+                },
                 'multiple' => true
             ])
             ->add('Target', EntityType::class, [
@@ -71,6 +75,9 @@ class MissionsType extends AbstractType
                 'class' => Target::class,
                 'choice_label' => function($target){
                     return $target->getFirstname() . ' ' . $target->getLastName() . ' (' . $target->getNationality()->getNationality() . ')';
+                },
+                'choice_attr' => function($target){
+                    return ['country-id' => $target->getNationality()->getId()];
                 },
                 'multiple' => true
             ])
@@ -80,6 +87,9 @@ class MissionsType extends AbstractType
                 'choice_label' => function($hideout){
                     return $hideout->getAddress() . ' - ' . strtoupper($hideout->getCountry()->getName());
                 },
+                'choice_attr' => function($hideout){
+                    return ['country-id' => $hideout->getCountry()->getId()];
+                },
                 'multiple' => true
             ])
             ->add('agent', EntityType::class, [
@@ -87,6 +97,12 @@ class MissionsType extends AbstractType
                 'class' => Agent::class,
                 'choice_label' => function($agent){
                     return $agent->getFirstname() . ' ' . $agent->getLastname() .  ' (' . $agent->getNationality()->getNationality() . ') - ' . $agent->getSpecialtyString();
+                },
+                'choice_attr' => function($agent){
+                    return [
+                        'country-id' => $agent->getNationality()->getId(),
+                        'specialty-ids' => json_encode($agent->getSpecialtyIds())
+                    ];
                 },
                 'multiple' => true
             ])

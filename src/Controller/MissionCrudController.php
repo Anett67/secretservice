@@ -94,8 +94,6 @@ class MissionCrudController extends AbstractController
             return $this->redirectToRoute('admin');
 
         }
-
-        dd('delete');
     }
 
     /**

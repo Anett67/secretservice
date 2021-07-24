@@ -210,4 +210,16 @@ class Agent
         return implode(', ', $specialtyString);
 
     }
+
+    public function getSpecialtyIds(){
+
+        $specialtyIds = [];
+
+        foreach($this->specialty as $specialty){
+            $specialtyIds[] = $specialty->getId();
+        }
+
+        return $specialtyIds;
+
+    }
 }
