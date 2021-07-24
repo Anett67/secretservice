@@ -7,6 +7,47 @@ const agent = $('#missions_agent')
 const specialty = $('#missions_specialty')
 const hideout = $('#missions_Hideout')
 
+const disableTargetsOfAgentsNationality = agents => {
+
+    let agentCountryIds = [];
+
+    agents.forEach(agentId => {
+        for(let option of agent.children('option[value=' + agentId +']')){
+            agentCountryIds.push(option.getAttribute('country-id'))
+        }
+    })
+
+    for(let target of target.children('option')){
+        
+        if(agentCountryIds.includes(target.getAttribute('country-id'))){
+            target.setAttribute('disabled', 'disabled')
+            target.selected = false
+        }else{
+            target.removeAttribute('disabled')
+        }
+    }
+}
+
+const disableAgentsOfTargetsNationality = targets => {
+
+    let targetCountryIds = [];
+
+    targets.forEach(targetId => {
+        for(let option of target.children('option[value=' + targetId +']')){
+            targetCountryIds.push(option.getAttribute('country-id'))
+        }
+    })
+
+    for(let agent of agent.children('option')){
+        
+        if(targetCountryIds.includes(agent.getAttribute('country-id'))){
+            agent.setAttribute('disabled', 'disabled')
+            agent.selected = false
+        }else{
+            agent.removeAttribute('disabled')
+        }
+    }
+}
 
 const disableContactsOfOtherCountries = country => {
 
@@ -34,28 +75,22 @@ const disableHideoutsOfOtherCountries = country => {
 
  disableContactsOfOtherCountries(country.val())
  disableHideoutsOfOtherCountries(country.val())
+ disableTargetsOfAgentsNationality(agent.val())
+ disableAgentsOfTargetsNationality(target.val())
 
 country.on('change', () => {
     disableContactsOfOtherCountries(country.val())
-    disableHideoutsOfOtherCountries(hideout.val())
+    disableHideoutsOfOtherCountries(country.val())
 });
 
 specialty.on('change', () => {
     
 });
 
-contact.on('change', () => {
-    
-});
-
 agent.on('change', () => {
-    
-});
-
-hideout.on('change', () => {
-    
+    disableTargetsOfAgentsNationality(agent.val())
 });
 
 target.on('change', () => {
-    
+    disableAgentsOfTargetsNationality(target.val())
 });

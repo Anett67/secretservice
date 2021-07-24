@@ -6,3 +6,24 @@
     }
 
 }
+
+#missions_Contact,
+#missions_Target,
+#missions_agent,
+#missions_Hideout{
+
+    option{
+        font-weight: 500;
+    }
+
+    option:disabled{
+        color: $gray-500;
+        font-weight: lighter;
+    }
+
+    input, select {
+        background-color: $gray-800;
+    }
+
+}
+
