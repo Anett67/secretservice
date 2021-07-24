@@ -142,4 +142,5 @@ class Hideout
 
         return $this;
     }
+
 }

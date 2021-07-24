@@ -75,6 +75,8 @@ class Agent
      */
     private $missions;
 
+    private $displayInForm;
+
     public function __construct()
     {
         $this->specialty = new ArrayCollection();
@@ -195,5 +197,17 @@ class Agent
         }
 
         return $this;
+    }
+
+    public function getSpecialtyString(){
+
+        $specialtyString = [];
+
+        foreach($this->specialty as $specialty){
+            $specialtyString[] = $specialty->getName();
+        }
+
+        return implode(', ', $specialtyString);
+
     }
 }

@@ -61,25 +61,33 @@ class MissionsType extends AbstractType
             ->add('Contact', EntityType::class, [
                 'label' => 'Contact',
                 'class' => Contact::class,
-                'choice_label' => 'lastname',
+                'choice_label' => function($contact){
+                    return $contact->getFirstname() . ' ' . $contact->getLastName() . ' (' . $contact->getNationality()->getNationality() . ')';
+                },
                 'multiple' => true
             ])
             ->add('Target', EntityType::class, [
                 'label' => 'Cibles',
                 'class' => Target::class,
-                'choice_label' => 'lastname',
+                'choice_label' => function($target){
+                    return $target->getFirstname() . ' ' . $target->getLastName() . ' (' . $target->getNationality()->getNationality() . ')';
+                },
                 'multiple' => true
             ])
             ->add('Hideout', EntityType::class, [
                 'label' => 'Planques',
                 'class' => Hideout::class,
-                'choice_label' => 'code',
+                'choice_label' => function($hideout){
+                    return $hideout->getAddress() . ' - ' . strtoupper($hideout->getCountry()->getName());
+                },
                 'multiple' => true
             ])
             ->add('agent', EntityType::class, [
                 'label' => 'Agents',
                 'class' => Agent::class,
-                'choice_label' => 'lastname',
+                'choice_label' => function($agent){
+                    return $agent->getFirstname() . ' ' . $agent->getLastname() .  ' (' . $agent->getNationality()->getNationality() . ') - ' . $agent->getSpecialtyString();
+                },
                 'multiple' => true
             ])
         ;

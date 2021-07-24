@@ -31,11 +31,7 @@
                     <td>{{ agent.getDateOfBirth|date('d-m-Y') }}</td>
                     <td>{{ agent.getIdCode }}</td>
                     <td>{{ agent.nationality.nationality }}</td>
-                    <td>
-                        {% for specialty in agent.specialty %}
-                            {{ specialty.name }} |
-                        {% endfor %}
-                    </td>
+                    <td>{{ agent.getSpecialtyString }}</td>
                     <td>
                         <button class="btn">
                             <a href="{{ path('agent_edit', {'id': agent.id }) }}"><i class="text-warning fa fa-edit"></i></a>
