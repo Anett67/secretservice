@@ -4,7 +4,6 @@ const country = $('#missions_country')
 const contact = $('#missions_Contact')
 const target = $('#missions_Target')
 const agent = $('#missions_agent')
-const specialty = $('#missions_specialty')
 const hideout = $('#missions_Hideout')
 
 const disableTargetsOfAgentsNationality = agents => {
@@ -81,10 +80,6 @@ const disableHideoutsOfOtherCountries = country => {
 country.on('change', () => {
     disableContactsOfOtherCountries(country.val())
     disableHideoutsOfOtherCountries(country.val())
-});
-
-specialty.on('change', () => {
-    
 });
 
 agent.on('change', () => {

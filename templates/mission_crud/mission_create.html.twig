@@ -1,5 +1,6 @@
 {% extends 'admin.html.twig' %}
 
+{% set selectHelp = 'Pour sélectionner plusieurs options ou déselectionner une appuyez sur Ctrl' %}
 
 {% block body %}
 
@@ -14,14 +15,32 @@
 
     {% include "flashMessages.html.twig" %}
 
+
+
     <div class="row">
 
-        <div class="col col-md-8">
+        <div class="col-12 col-xl-8">
             {{form_start(form)}}
                 <div class="form-messages">
                     {{ form_errors(form) }}
                 </div>
-                {{ form_widget(form) }}
+                {{ form_row(form.title) }}
+                {{ form_row(form.description) }}
+                {{ form_row(form.code_name) }}
+                {{ form_row(form.start_date) }}
+                {{ form_row(form.end_date) }}
+                {{ form_row(form.country) }}
+                {{ form_row(form.type) }}
+                {{ form_row(form.status) }}
+                {{ form_row(form.specialty) }}
+                {{ form_row(form.Contact) }}
+                    <small class="form-text text-muted text-right mb-1 mt-0 d-none d-sm-block">{{ selectHelp }}</small>
+                {{ form_row(form.Target) }}
+                    <small class="form-text text-muted text-right mb-1 mt-0 d-none d-sm-block">{{ selectHelp }}</small>
+                {{ form_row(form.Hideout) }}
+                    <small class="form-text text-muted text-right mb-1 mt-0 d-none d-sm-block">{{ selectHelp }}</small>
+                {{ form_row(form.agent) }}
+                    <small class="form-text text-muted text-right mb-1 mt-0 d-none d-sm-block">{{ selectHelp }}</small>
                 <input type="submit" class="btn btn-success w-25" value="Enregistrer">
             {{form_end(form)}}
         </div>

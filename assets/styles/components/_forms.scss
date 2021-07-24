@@ -24,6 +24,21 @@
     input, select {
         background-color: $gray-800;
     }
-
+    
 }
 
+textarea{
+    height: 200px;
+}
+
+small{
+    text-align: right;
+}
+
+label, legend{
+    color: $green;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: .1rem;
+    font-weight: bolder;
+}
