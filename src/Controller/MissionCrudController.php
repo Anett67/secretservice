@@ -34,6 +34,34 @@ class MissionCrudController extends AbstractController
 
         if($form->isSubmitted() && $form->isValid()){
 
+            $error = false;
+
+            if(!$mission->check_Targets_agents_nationality()){
+                $this->addFlash('error', 'La ou les cibles ne peuvent pas avoir la même nationalité que le ou les agents');
+
+                $error = true;
+            }
+
+            if(!$mission->check_Contact_nationality()){
+                $this->addFlash('error', 'Les contacts sont obligatoirement de la nationalité du pays de la mission');
+
+                $error = true;
+            }
+
+            if(!$mission->check_hideout_country()){
+                $this->addFlash('error', 'La planque est obligatoirement dans le même pays que la mission.');
+
+                $error = true;
+            }
+
+            if(!$mission->check_agents_for_specialties()){
+                $this->addFlash('error', 'Il faut assigner au moins 1 agent disposant de la spécialité requise');
+
+                $error = true;                
+            }
+
+            if($error) return $this->redirect($request->getUri());
+
             $mission_exists = $mission->getId();
 
             $manager->persist($mission);

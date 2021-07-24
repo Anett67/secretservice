@@ -5,13 +5,6 @@
 
     <h1>{{ edit ? 'Modifier' : 'Ajouter' }} une mission</h1>
 
-    <ul class="text-info">
-        <li>La ou les cibles ne peuvent pas avoir la même nationalité que le ou les agents</li>
-        <li>Les contacts sont obligatoirement de la nationalité du pays de la mission</li>
-        <li>La planque est obligatoirement dans le même pays que la mission</li>
-        <li>Il faut assigner au moins 1 agent disposant de la spécialité requise</li>
-    </ul>
-
     {% include "flashMessages.html.twig" %}
 
     <div class="row">
