@@ -7,12 +7,8 @@ const agent = $('#missions_agent')
 const specialty = $('#missions_specialty')
 const hideout = $('#missions_Hideout')
 
-const adjustValuesToCountry = country => {
-    
-    disableOfOtherCountries(country.val())
-}
 
-const disableOfOtherCountries = country => {
+const disableContactsOfOtherCountries = country => {
 
     for(let contact of contact.children('option')){
         if(contact.getAttribute('country-id') !== country){
@@ -24,10 +20,24 @@ const disableOfOtherCountries = country => {
     }
 }
 
-adjustValuesToCountry(country)
+const disableHideoutsOfOtherCountries = country => {
+
+    for(let hideout of hideout.children('option')){
+        if(hideout.getAttribute('country-id') !== country){
+            hideout.setAttribute('disabled', 'disabled')
+            hideout.selected = false
+        }else{
+            hideout.removeAttribute('disabled')
+        }
+    }
+}
+
+ disableContactsOfOtherCountries(country.val())
+ disableHideoutsOfOtherCountries(country.val())
 
 country.on('change', () => {
-    adjustValuesToCountry(country)
+    disableContactsOfOtherCountries(country.val())
+    disableHideoutsOfOtherCountries(hideout.val())
 });
 
 specialty.on('change', () => {
