@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Agent;
 use App\Form\AgentType;
+use App\Repository\MissionRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -56,6 +57,8 @@ class AgentCrudController extends AbstractController
 
         if($this->isCsrfTokenValid('SUP' . $agent->getId(), $request->get('_token'))){
             
+            dd($agent->getMissions());
+
             $entitymanager->remove($agent);
             $entitymanager->flush();
             $this->addFlash("success",  "La suppression a été effectuée");

@@ -2,6 +2,10 @@
 
 {% set selectHelp = 'Pour sélectionner plusieurs options ou déselectionner une appuyez sur Ctrl' %}
 
+{% block javascripts %}
+    {{ encore_entry_script_tags('app') }}
+{% endblock %}
+
 {% block body %}
 
     <h1>{{ edit ? 'Modifier' : 'Ajouter' }} une mission</h1>

@@ -5,6 +5,13 @@ const contact = $('#missions_Contact')
 const target = $('#missions_Target')
 const agent = $('#missions_agent')
 const hideout = $('#missions_Hideout')
+const status = $('#missions_status')
+const startDateDay = $('#missions_end_date_day').val();
+const startDateMonth = $('#missions_end_date_month').val();
+const startDateYear = $('#missions_end_date_year').val();
+const endDateDay = $('#missions_end_date_day').val();
+const endDateMonth = $('#missions_end_date_month').val();
+const endDateYear = $('#missions_end_date_year').val();
 
 const disableTargetsOfAgentsNationality = agents => {
 
@@ -89,3 +96,5 @@ agent.on('change', () => {
 target.on('change', () => {
     disableAgentsOfTargetsNationality(target.val())
 });
+
+

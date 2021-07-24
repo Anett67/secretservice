@@ -11,7 +11,6 @@
     <table class="table table-hover mt-3">
         <thead>
             <tr>
-                <th scope="col">Id</th>
                 <th scope="col">Titre</th>
                 <th scope="col">Code</th>
                 <th class="col">Pays</th>
@@ -29,7 +28,6 @@
         <tbody>
             {% for mission in missions %}
                 <tr>
-                    <td>{{ mission.id }}</td>
                     <td>{{ mission.title }}</td>
                     <td>{{ mission.getCodeName }}</td>
                     <td>{{ mission.country.name }}</td>
@@ -37,17 +35,17 @@
                     <td>{{ mission.type.name }}</td>
                     <td>  
                         {% for target in mission.target %}
-                            {{ target.firstname }} {{ target.lastname }} |
+                            {{ target.firstname }} {{ target.lastname }} <br>
                         {% endfor %}
                     </td>
                     <td>  
                         {% for hideout in mission.hideout %}
-                            {{ hideout.code }} |
+                            {{ hideout.code }} <br>
                         {% endfor %}
                     </td>
                     <td>  
                         {% for agent in mission.agent %}
-                            {{ agent.firstname }} {{ agent.lastname }} |
+                            {{ agent.firstname }} {{ agent.lastname }} <br>
                         {% endfor %}
                     </td>
                     <td>{{ mission.getStartDate|date('d-m-Y') }}</td>

@@ -11,12 +11,11 @@
         {% endblock %}
 
         {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
         {% endblock %}
     </head>
     <body>
         <div class="admin-sidebar-menu bg-primary p-4">
-            <h3>Administration</h3>
+
             <nav class="navbar navbar-expand-lg">
                 <ul class="admin-nav navbar-nav my-5 flex-column">
                     <li class="nav-item py-2 {% if title == 'Missions' %} active {% endif %}">
