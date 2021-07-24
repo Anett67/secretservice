@@ -32,7 +32,7 @@ class TargetType extends AbstractType
             ->add('nationality', EntityType::class, [
                 'label' => 'Nationalité',
                 'class' => Country::class,
-                'choice_label' => 'name'
+                'choice_label' => 'nationality'
             ])
         ;
     }

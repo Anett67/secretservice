@@ -27,7 +27,7 @@
                         </li>
                     {% endif %}
                 </ul>
-                {% if app.user.id %}
+                {% if app.user.id is defined and app.user.id %}
                     <a href="{{ path('app_logout') }}" class="btn btn-primary">Se Déconnecter</a>
                 {% else %}
                     <a href="{{ path('app_login') }}" class="btn btn-primary">Se Connecter</a>

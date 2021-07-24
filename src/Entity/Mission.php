@@ -78,12 +78,12 @@ class Mission
     /**
      * @ORM\ManyToMany(targetEntity=Contact::class, inversedBy="missions")
      */
-    private $contact;
+    private $Contact;
 
     /**
      * @ORM\ManyToMany(targetEntity=Target::class, inversedBy="missions")
      */
-    private $target;
+    private $Target;
 
     /**
      * @ORM\ManyToMany(targetEntity=Hideout::class, inversedBy="missions")
@@ -108,8 +108,8 @@ class Mission
 
     public function __construct()
     {
-        $this->contact = new ArrayCollection();
-        $this->target = new ArrayCollection();
+        $this->Contact = new ArrayCollection();
+        $this->Target = new ArrayCollection();
         $this->hideout = new ArrayCollection();
         $this->agent = new ArrayCollection();
     }
@@ -208,21 +208,21 @@ class Mission
      */
     public function getContact(): Collection
     {
-        return $this->contact;
+        return $this->Contact;
     }
 
-    public function addContact(Contact $contact): self
+    public function addContact(Contact $Contact): self
     {
-        if (!$this->contact->contains($contact)) {
-            $this->contact[] = $contact;
+        if (!$this->Contact->contains($Contact)) {
+            $this->Contact[] = $Contact;
         }
 
         return $this;
     }
 
-    public function removeContact(Contact $contact): self
+    public function removeContact(Contact $Contact): self
     {
-        $this->contact->removeElement($contact);
+        $this->Contact->removeElement($Contact);
 
         return $this;
     }
@@ -232,21 +232,21 @@ class Mission
      */
     public function getTarget(): Collection
     {
-        return $this->target;
+        return $this->Target;
     }
 
-    public function addTarget(Target $target): self
+    public function addTarget(Target $Target): self
     {
-        if (!$this->target->contains($target)) {
-            $this->target[] = $target;
+        if (!$this->Target->contains($Target)) {
+            $this->Target[] = $Target;
         }
 
         return $this;
     }
 
-    public function removeTarget(Target $target): self
+    public function removeTarget(Target $Target): self
     {
-        $this->target->removeElement($target);
+        $this->Target->removeElement($Target);
 
         return $this;
     }
@@ -323,27 +323,27 @@ class Mission
         return $this;
     }
 
-    public function check_targets_agents_nationality()
+    public function check_Targets_agents_nationality()
     {
         $agent_nationalities_ids = [];
-        $target_nationalities_ids = [];
+        $Target_nationalities_ids = [];
 
         foreach($this->agent as $agent){
             $agent_nationalities_ids[] = $agent->getNationality()->getId();
         }
 
-        foreach($this->target as $target){
-            $target_nationalities_ids[] = $target->getNationality()->getId();
+        foreach($this->Target as $Target){
+            $Target_nationalities_ids[] = $Target->getNationality()->getId();
         }
 
-        return array_diff($agent_nationalities_ids, $target_nationalities_ids) === $agent_nationalities_ids;
+        return array_diff($agent_nationalities_ids, $Target_nationalities_ids) === $agent_nationalities_ids;
 
     }
 
-    public function check_contact_nationality()
+    public function check_Contact_nationality()
     {
-        foreach($this->contact as $contact){
-            if($contact->getNationality()->getId() !== $this->country->getId()){
+        foreach($this->Contact as $Contact){
+            if($Contact->getNationality()->getId() !== $this->country->getId()){
                 return false;
             }
         }

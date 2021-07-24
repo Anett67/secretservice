@@ -46,7 +46,7 @@ class Target
 
     /**
      * @ORM\Column(type="date")
-     * @Assert\LessThanOrEqual("-18 years", message="L'agent doit être majeur")
+     * @Assert\LessThanOrEqual("-18 years", message="Le cible doit être majeur")
      */
     private $date_of_birth;
 
