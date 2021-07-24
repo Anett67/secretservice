@@ -88,7 +88,7 @@ class Mission
     /**
      * @ORM\ManyToMany(targetEntity=Hideout::class, inversedBy="missions")
      */
-    private $hideout;
+    private $Hideout;
 
     /**
      * @ORM\ManyToMany(targetEntity=Agent::class, inversedBy="missions")
@@ -110,7 +110,7 @@ class Mission
     {
         $this->Contact = new ArrayCollection();
         $this->Target = new ArrayCollection();
-        $this->hideout = new ArrayCollection();
+        $this->Hideout = new ArrayCollection();
         $this->agent = new ArrayCollection();
     }
 
@@ -256,21 +256,21 @@ class Mission
      */
     public function getHideout(): Collection
     {
-        return $this->hideout;
+        return $this->Hideout;
     }
 
-    public function addHideout(Hideout $hideout): self
+    public function addHideout(Hideout $Hideout): self
     {
-        if (!$this->hideout->contains($hideout)) {
-            $this->hideout[] = $hideout;
+        if (!$this->Hideout->contains($Hideout)) {
+            $this->Hideout[] = $Hideout;
         }
 
         return $this;
     }
 
-    public function removeHideout(Hideout $hideout): self
+    public function removeHideout(Hideout $Hideout): self
     {
-        $this->Hideout->removeElement($hideout);
+        $this->Hideout->removeElement($Hideout);
 
         return $this;
     }
@@ -351,10 +351,10 @@ class Mission
         return true;
     }
 
-    public function check_hideout_country()
+    public function check_Hideout_country()
     {
-        foreach($this->hideout as $hideout){
-            if($hideout->getCountry()->getId() !== $this->country->getId()){
+        foreach($this->Hideout as $Hideout){
+            if($Hideout->getCountry()->getId() !== $this->country->getId()){
                 return false;
             }
         }

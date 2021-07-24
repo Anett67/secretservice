@@ -55,6 +55,17 @@ class TargetCrudController extends AbstractController
     public function target_delete(Target $target, Request $request, EntityManagerInterface $entitymanager){
 
         if($this->isCsrfTokenValid('SUP' . $target->getId(), $request->get('_token'))){
+
+            foreach($target->getMissions() as $mission){
+
+                if(count($mission->getTarget()) === 1){
+
+                    $this->addFlash('error', 'Le cible est attaché à une ou plusieurs missions. Modifiez ses missions avant de le supprimer');
+                    return $this->redirectToRoute('admin_contacts');
+
+                }
+
+            }
             
             $entitymanager->remove($target);
             $entitymanager->flush();

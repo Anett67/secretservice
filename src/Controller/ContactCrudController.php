@@ -55,6 +55,17 @@ class ContactCrudController extends AbstractController
     public function contact_delete(Contact $contact, Request $request, EntityManagerInterface $entitymanager){
 
         if($this->isCsrfTokenValid('SUP' . $contact->getId(), $request->get('_token'))){
+
+            foreach($contact->getMissions() as $mission){
+
+                if(count($mission->getContact()) === 1){
+
+                    $this->addFlash('error', 'Le contact est attaché à une ou plusieurs missions. Modifiez ses missions avant de le supprimer');
+                    return $this->redirectToRoute('admin_contacts');
+
+                }
+
+            }
             
             $entitymanager->remove($contact);
             $entitymanager->flush();

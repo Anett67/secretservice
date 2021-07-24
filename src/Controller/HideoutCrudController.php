@@ -56,6 +56,17 @@ class HideoutCrudController extends AbstractController
     public function hideout_delete(Hideout $hideout, Request $request, EntityManagerInterface $entitymanager){
 
         if($this->isCsrfTokenValid('SUP' . $hideout->getId(), $request->get('_token'))){
+
+            foreach($hideout->getMissions() as $mission){
+
+                if(count($mission->getHideout()) === 1){
+
+                    $this->addFlash('error', 'La planque est attaché à une ou plusieurs missions. Modifiez ses missions avant de le supprimer');
+                    return $this->redirectToRoute('admin_contacts');
+
+                }
+
+            }
             
             $entitymanager->remove($hideout);
             $entitymanager->flush();
@@ -107,6 +118,7 @@ class HideoutCrudController extends AbstractController
     public function hideout_type_delete(HideoutType $hideout_type, Request $request, EntityManagerInterface $entitymanager){
 
         if($this->isCsrfTokenValid('SUP' . $hideout_type->getId(), $request->get('_token'))){
+            
             
             $entitymanager->remove($hideout_type);
             $entitymanager->flush();
