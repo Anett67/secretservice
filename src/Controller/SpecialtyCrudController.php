@@ -55,6 +55,11 @@ class SpecialtyCrudController extends AbstractController
     public function specialty_delete(Specialty $specialty, Request $request, EntityManagerInterface $entitymanager){
 
         if($this->isCsrfTokenValid('SUP' . $specialty->getId(), $request->get('_token'))){
+
+            if(count($specialty->getAgents()) || count($specialty->getMissions())){
+                $this->addFlash('error', 'La spécialité est attaché à une ou plusieurs missions ou agents. Modifiez-les avant de le supprimer');
+                return $this->redirectToRoute('admin_specialties');
+            }
             
             $entitymanager->remove($specialty);
             $entitymanager->flush();
