@@ -137,6 +137,11 @@ class MissionCrudController extends AbstractController
     public function mission_type_delete(MissionType $mission_type, Request $request, EntityManagerInterface $entitymanager){
 
         if($this->isCsrfTokenValid('SUP' . $mission_type->getId(), $request->get('_token'))){
+
+            if(count($mission_type->getMissions())){
+                $this->addFlash('error', 'Ce type est attaché à une ou plusieurs missions. Modifiez les missions pour le supprimer.');
+                return $this->redirectToRoute('admin');
+            }
             
             $entitymanager->remove($mission_type);
             $entitymanager->flush();
