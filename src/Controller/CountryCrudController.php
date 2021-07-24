@@ -56,6 +56,15 @@ class CountryCrudController extends AbstractController
     public function country_delete(Country $country, Request $request, EntityManagerInterface $entitymanager){
 
         if($this->isCsrfTokenValid('SUP' . $country->getId(), $request->get('_token'))){
+
+            if(count($country->getMissions()) || 
+            count($country->getAgents()) || 
+            count($country->getContacts()) || 
+            count($country->getHideouts())||
+            count($country->getTargets())){
+                $this->addFlash('error', 'Le pays ne peut pas être supprimé.');
+                return $this->redirectToRoute('admin_countries');
+            }
             
             $entitymanager->remove($country);
             $entitymanager->flush();
