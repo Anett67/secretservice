@@ -118,7 +118,11 @@ class HideoutCrudController extends AbstractController
     public function hideout_type_delete(HideoutType $hideout_type, Request $request, EntityManagerInterface $entitymanager){
 
         if($this->isCsrfTokenValid('SUP' . $hideout_type->getId(), $request->get('_token'))){
-            
+
+            if(count($hideout_type->getHideouts())){
+                $this->addFlash('error', 'Ce type est attaché à une ou plusieurs planque. Modifiez les planque pour la supprimer');
+                return $this->redirectToRoute('admin_hideouts');
+            }
             
             $entitymanager->remove($hideout_type);
             $entitymanager->flush();
