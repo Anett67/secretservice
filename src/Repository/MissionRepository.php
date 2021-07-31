@@ -19,6 +19,12 @@ class MissionRepository extends ServiceEntityRepository
         parent::__construct($registry, Mission::class);
     }
 
+    public function findAllWithPagination(){
+        
+        return $this->createQueryBuilder('m');
+
+    }
+
     // /**
     //  * @return Mission[] Returns an array of Mission objects
     //  */
