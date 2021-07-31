@@ -48,13 +48,19 @@ class AdminController extends AbstractController
      * @Route("/admin/agents", name="admin_agents")
      * @IsGranted("ROLE_ADMIN")
      */
-    public function agents(AgentRepository $repository): Response
+    public function agents(AgentRepository $repository, Request $request, PaginatorInterface $paginator): Response
     {
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
 
+        $pagination = $paginator->paginate(
+            $repository->findAll(),
+            $request->query->getInt('page', 1),
+            10
+        );
+
         return $this->render('admin/Agents.html.twig', [
             'title' => 'Agents',
-            'agents' => $repository->findAll()
+            'agents' => $pagination
         ]);
     }
 
@@ -62,13 +68,19 @@ class AdminController extends AbstractController
      * @Route("/admin/cibles", name="admin_targets")
      * @IsGranted("ROLE_ADMIN")
      */
-    public function targets(TargetRepository $repository): Response
+    public function targets(TargetRepository $repository, Request $request, PaginatorInterface $paginator): Response
     {
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
 
+        $pagination = $paginator->paginate(
+            $repository->findAll(),
+            $request->query->getInt('page', 1),
+            10
+        );
+
         return $this->render('admin/targets.html.twig', [
             'title' => 'Cibles',
-            'targets' => $repository->findAll()
+            'targets' => $pagination
         ]);
     }
 
@@ -76,13 +88,19 @@ class AdminController extends AbstractController
      * @Route("/admin/contacts", name="admin_contacts")
      * @IsGranted("ROLE_ADMIN")
      */
-    public function contacts(ContactRepository $repository): Response
+    public function contacts(ContactRepository $repository, Request $request, PaginatorInterface $paginator): Response
     {
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
 
+        $pagination = $paginator->paginate(
+            $repository->findAll(),
+            $request->query->getInt('page', 1),
+            10
+        );
+
         return $this->render('admin/contacts.html.twig', [
             'title' => 'Contacts',
-            'contacts' => $repository->findAll()
+            'contacts' => $pagination
         ]);
     }
 
@@ -90,13 +108,19 @@ class AdminController extends AbstractController
      * @Route("/admin/planques", name="admin_hideouts")
      * @IsGranted("ROLE_ADMIN")
      */
-    public function hideouts(HideoutRepository $repository, HideoutTypeRepository $hideoutTypeRepository): Response
+    public function hideouts(HideoutRepository $repository, HideoutTypeRepository $hideoutTypeRepository, Request $request, PaginatorInterface $paginator): Response
     {
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
 
+        $pagination = $paginator->paginate(
+            $repository->findAll(),
+            $request->query->getInt('page', 1),
+            10
+        );
+
         return $this->render('admin/hideouts.html.twig', [
             'title' => 'Planques',
-            'hideouts' => $repository->findAll(),
+            'hideouts' => $pagination,
             'hideoutTypes' => $hideoutTypeRepository->findAll()
         ]);
     }
@@ -105,13 +129,19 @@ class AdminController extends AbstractController
      * @Route("/admin/pays", name="admin_countries")
      * @IsGranted("ROLE_ADMIN")
      */
-    public function countries(CountryRepository $repository): Response
+    public function countries(CountryRepository $repository, Request $request, PaginatorInterface $paginator): Response
     {
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
 
+        $pagination = $paginator->paginate(
+            $repository->findAll(),
+            $request->query->getInt('page', 1),
+            10
+        );
+
         return $this->render('admin/countries.html.twig', [
             'title' => 'Pays',
-            'countries' => $repository->findAll()
+            'countries' => $pagination
         ]);
     }
 
@@ -119,13 +149,19 @@ class AdminController extends AbstractController
      * @Route("/admin/administrateurs", name="admin_administrators")
      * @IsGranted("ROLE_ADMIN")
      */
-    public function administrators(UserRepository $repository): Response
+    public function administrators(UserRepository $repository, Request $request, PaginatorInterface $paginator): Response
     {
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
 
+        $pagination = $paginator->paginate(
+            $repository->findAll(),
+            $request->query->getInt('page', 1),
+            10
+        );
+
         return $this->render('admin/Administrators.html.twig', [
             'title' => 'Administrateurs',
-            'users' => $repository->findAll()
+            'users' => $pagination
         ]);
     }
 
@@ -133,13 +169,19 @@ class AdminController extends AbstractController
      * @Route("/admin/specialites", name="admin_specialties")
      * @IsGranted("ROLE_ADMIN")
      */
-    public function specialties(SpecialtyRepository $repository): Response
+    public function specialties(SpecialtyRepository $repository, Request $request, PaginatorInterface $paginator): Response
     {
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
 
+        $pagination = $paginator->paginate(
+            $repository->findAll(),
+            $request->query->getInt('page', 1),
+            10
+        );
+
         return $this->render('admin/specialties.html.twig', [
             'title' => 'Spécialités',
-            'specialties' => $repository->findAll()
+            'specialties' => $pagination
         ]);
     }
 }
