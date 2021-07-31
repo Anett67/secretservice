@@ -14,9 +14,9 @@
             <tr>
                 <th>Id</th>
                 <th>Code</th>
-                <th>Addresse</th>
-                <th>Pays</th>
-                <th>Type</th>
+                <th>{{ knp_pagination_sortable(hideouts, 'Adresse', 'h.address') }}</th>
+                <th>{{ knp_pagination_sortable(hideouts, 'Pays', 'c.name') }}</th>
+                <th>{{ knp_pagination_sortable(hideouts, 'Type', 't.name') }}</th>
                 <th>Actions</th>
             </tr>
         </thead>
