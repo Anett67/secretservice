@@ -24,7 +24,8 @@ class MissionRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('m')
             ->join('m.country', 'c')
             ->join('m.status', 's')
-            ->join('m.type', 't');
+            ->join('m.type', 't')
+            ->join('m.specialty', 'sp');
 
     }
 

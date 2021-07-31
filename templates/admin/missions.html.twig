@@ -14,15 +14,15 @@
                 <th scope="col">
                     {{ knp_pagination_sortable(missions, 'Titre', 'm.title') }}</th>
                 <th scope="col">Code</th>
-                <th class="col">Pays</th>
-                <th class="col">Type</th>
-                <th class="col">Spécialité</th>
+                <th class="col">{{ knp_pagination_sortable(missions, 'Pays', 'c.name') }}</th>
+                <th class="col">{{ knp_pagination_sortable(missions, 'Type', 't.name') }}</th>
+                <th class="col">{{ knp_pagination_sortable(missions, 'Spécialité', 'sp.name') }}</th>
                 <th class="col">Cible</th>
                 <th class="col">Planque</th>
                 <th class="col">Agent</th>
-                <th class="col">Début</th>
-                <th class="col">Fin</th>
-                <th class="col">Status</th>
+                <th class="col">{{ knp_pagination_sortable(missions, 'Début', 'm.start_date') }}</th>
+                <th class="col">{{ knp_pagination_sortable(missions, 'Fin', 'm.end_date') }}</th>
+                <th class="col">{{ knp_pagination_sortable(missions, 'Status', 's.name') }}</th>
                 <th class="col">Actions</th>
             </tr>
         </thead>
