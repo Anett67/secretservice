@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ mission.title }}{% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('app') }}
+{% endblock %}
+
+{% block body %}
+
+    <h1 class="mt-5">{{ mission.title }}</h1>
+
+    <h2 class="mt-4">Description</h2>
+
+    <p>{{ mission.description }}</p>
+
+{% endblock %}

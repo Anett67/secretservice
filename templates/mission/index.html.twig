@@ -12,7 +12,7 @@
         <div class="col-5">
             <form class="d-flex p-4">
                 <input class="form-control me-sm-2" type="text" placeholder="Recherche">
-                <button class="btn btn-secondary my-2 my-sm-0" type="submit">Recherche</button>
+                <button class="btn btn-success my-2 my-sm-0" type="submit">Recherche</button>
             </form>
         </div>
     </div>
@@ -36,7 +36,7 @@
                     <td>{{ mission.type.getName }}</td>
                     <td>{{ mission.status.getName }}</td>
                     <td>{{ mission.getCodeName }}</td>
-                    <td><a class="btn btn-info" href="">Détails</a></td>
+                    <td><a class="btn btn-info" href="{{ path('single-mission',{'id' : mission.id}) }}">Détails</a></td>
                 </tr>
             {% endfor %}
         </tbody>

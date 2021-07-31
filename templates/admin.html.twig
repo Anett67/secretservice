@@ -64,7 +64,12 @@
                     </li>
                 </ul>
             </nav>
-            <a href="{{ path('app_logout') }}" class="btn btn-secondary">Se déconnecter</a>
+            {% if app.user.id %}
+                <a href="{{ path('app_logout') }}" class="btn btn-secondary">Se déconnecter</a>
+            {% else %}
+                <a href="{{ path('app_login') }}" class="btn btn-secondary">Se Connecter</a>
+            {% endif %}
+            
         </div>
         <div class="admin-body">
             <div class="p-4">
