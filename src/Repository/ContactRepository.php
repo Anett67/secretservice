@@ -19,6 +19,13 @@ class ContactRepository extends ServiceEntityRepository
         parent::__construct($registry, Contact::class);
     }
 
+    public function findAllWithPagination(){
+        
+        return $this->createQueryBuilder('c')
+            ->join('c.nationality', 'cn');
+
+    }
+
     // /**
     //  * @return Contact[] Returns an array of Contact objects
     //  */

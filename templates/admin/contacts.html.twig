@@ -13,11 +13,11 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Nom</th>
-                <th>Prénom</th>
-                <th>Date de naissance</th>
+                <th>{{ knp_pagination_sortable(contacts, 'Nom', 'c.lastname') }}</th>
+                <th>{{ knp_pagination_sortable(contacts, 'Prénom', 'c.firstname') }}</th>
+                <th>{{ knp_pagination_sortable(contacts, 'Date de naissance', 'c.date_of_birth') }}</th>
                 <th>Id Code</th>
-                <th>Nationalité</th>
+                <th>{{ knp_pagination_sortable(contacts, 'Nationalité', 'cn.name') }}</th>
                 <th>Actions</th>
             </tr>
         </thead>

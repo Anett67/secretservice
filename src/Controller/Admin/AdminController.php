@@ -93,7 +93,7 @@ class AdminController extends AbstractController
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
 
         $pagination = $paginator->paginate(
-            $repository->findAll(),
+            $repository->findAllWithPagination(),
             $request->query->getInt('page', 1),
             10
         );
