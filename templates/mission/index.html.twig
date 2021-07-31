@@ -19,10 +19,11 @@
     <table class="table table-hover mt-3">
         <thead>
             <tr>
-                <th>Titre</th>
-                <th>Pays</th>
-                <th>Type</th>
-                <th>Status</th>
+                <th>{{ knp_pagination_sortable(missions, 'Titre', 'm.title') }}</th>
+                <th>{{ knp_pagination_sortable(missions, 'Pays', 'c.name') }}</th>
+                
+                <th>{{ knp_pagination_sortable(missions, 'Type', 't.name') }}</th>
+                <th>{{ knp_pagination_sortable(missions, 'Status', 's.name') }}</th>
                 <th>Code</th>
                 <th>Actions</th>
             </tr>

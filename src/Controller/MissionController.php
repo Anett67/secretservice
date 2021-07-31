@@ -19,7 +19,7 @@ class MissionController extends AbstractController
     public function index(MissionRepository $missionRepository, PaginatorInterface $paginator, Request $request): Response
     {
         $pagination = $paginator->paginate(
-            $missionRepository->findAll(),
+            $missionRepository->findAllWithPagination(),
             $request->query->getInt('page', 1),
             10
         );

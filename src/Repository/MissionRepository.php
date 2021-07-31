@@ -21,7 +21,10 @@ class MissionRepository extends ServiceEntityRepository
 
     public function findAllWithPagination(){
         
-        return $this->createQueryBuilder('m');
+        return $this->createQueryBuilder('m')
+            ->join('m.country', 'c')
+            ->join('m.status', 's')
+            ->join('m.type', 't');
 
     }
 
