@@ -8,10 +8,89 @@
 
 {% block body %}
 
-    <h1 class="mt-5">{{ mission.title }}</h1>
+    <h1 class="mt-5 text-success">{{ mission.title }} ({{ mission.getCodeName }})</h1>
 
-    <h2 class="mt-4">Description</h2>
+    <h2 class="mt-4 text-info">Description</h2>
 
     <p>{{ mission.description }}</p>
+
+    <div class="row">
+
+        <div class="col-12 col-sm-6">
+
+            <h2 class="mt-4 text-info">Dates</h2>
+            <p>{{ mission.getStartDate|date('d-m-Y') }} - {{ mission.getEndDate|date('d-m-Y') }}</p>
+
+        </div>
+        <div class="col-12 col-sm-6">
+
+            <h2 class="mt-4 text-info">Status</h2>
+            <p>{{ mission.status.getName }}</p>
+
+        </div>
+    
+    </div>
+
+        <div class="row">
+
+        <div class="col-12 col-sm-6">
+
+            <h2 class="mt-4 text-info">Type</h2>
+            <p>{{ mission.type.getName }}</p>
+
+        </div>
+        <div class="col-12 col-sm-6">
+
+            <h2 class="mt-4 text-info">Spécialité</h2>
+            <p>{{ mission.specialty.getName }}</p>
+
+        </div>
+    
+    </div>
+
+    <div class="row">
+
+    <div class="col-12 col-sm-6">
+
+        <h2 class="mt-4 text-info">Agents</h2>
+        
+        {% for agent in mission.agent %}
+            <p>{{ agent.firstname }} {{ agent.lastname }}</p>
+        {% endfor %}
+
+    </div>
+    <div class="col-12 col-sm-6">
+
+        <h2 class="mt-4 text-info">Cibles</h2>
+        {% for target in mission.target %}
+            <p>{{ target.firstname }} {{ target.lastname }}</p>
+        {% endfor %}
+
+    </div>
+
+        <div class="row">
+
+    <div class="col-12 col-sm-6">
+
+        <h2 class="mt-4 text-info">Planque</h2>
+        
+        {% for hideout in mission.hideout %}
+            <p>{{ hideout.address }}</p>
+            <p>Type: {{ hideout.type.getName }}</p>
+        {% endfor %}
+
+    </div>
+    <div class="col-12 col-sm-6">
+
+        <h2 class="mt-4 text-info">Country</h2>
+
+        <p>{{ mission.country.getName }}</p>
+
+    </div>
+
+</div>
+
+    
+    
 
 {% endblock %}
