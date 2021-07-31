@@ -13,11 +13,11 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Nom</th>
-                <th>Prénom</th>
-                <th>Date de naissance</th>
+                <th>{{ knp_pagination_sortable(agents, 'Nom', 'a.lastname') }}</th>
+                <th>{{ knp_pagination_sortable(agents, 'Prénom', 'a.firstname') }}</th>
+                <th>{{ knp_pagination_sortable(agents, 'Date de naissance', 'a.date_of_birth') }}</th>
                 <th>Id Code</th>
-                <th>Nationalité</th>
+                <th>{{ knp_pagination_sortable(agents, 'Nationalité', 'c.name') }}</th>
                 <th>Spécialité</th>
                 <th>Actions</th>
             </tr>

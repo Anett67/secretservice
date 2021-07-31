@@ -19,6 +19,13 @@ class AgentRepository extends ServiceEntityRepository
         parent::__construct($registry, Agent::class);
     }
 
+    public function findAllWithPagination(){
+        
+        return $this->createQueryBuilder('a')
+            ->join('a.nationality', 'c');
+
+    }
+
     // /**
     //  * @return Agent[] Returns an array of Agent objects
     //  */
