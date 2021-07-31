@@ -17,4 +17,29 @@
         </div>
     </div>
 
+    <table class="table table-hover mt-3">
+        <thead>
+            <tr>
+                <th>Titre</th>
+                <th>Pays</th>
+                <th>Type</th>
+                <th>Status</th>
+                <th>Code</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for mission in missions %}
+                <tr>
+                    <td>{{ mission.title }}</td>
+                    <td>{{ mission.country.getName }}</td>
+                    <td>{{ mission.type.getName }}</td>
+                    <td>{{ mission.status.getName }}</td>
+                    <td>{{ mission.getCodeName }}</td>
+                    <td><a class="btn btn-info" href="">Détails</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
 {% endblock %}
