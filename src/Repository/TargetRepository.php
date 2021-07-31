@@ -19,6 +19,13 @@ class TargetRepository extends ServiceEntityRepository
         parent::__construct($registry, Target::class);
     }
 
+    public function findAllWithPagination(){
+        
+        return $this->createQueryBuilder('t')
+            ->join('t.nationality', 'tn');
+
+    }
+
     // /**
     //  * @return Target[] Returns an array of Target objects
     //  */
