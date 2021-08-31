@@ -16,7 +16,7 @@ class UserCrudController extends AbstractController
     /**
      * @Route("admin/administrateur/creation", name="user_create")
      * @Route("admin/administrateur/{id}", name="user_edit", methods="GET|POST")
-     * @IsGranted("ROLE_ADMIN")
+     * @IsGranted("ROLE_SUPER_ADMIN")
      */
     public function user_create_edit(User $user = null, Request $request, EntityManagerInterface $manager): Response
     {
@@ -49,7 +49,7 @@ class UserCrudController extends AbstractController
 
     /**
      * @Route("/admin/administrator/delete/{id}", name="user_delete", methods="POST")
-     * @IsGranted("ROLE_ADMIN")
+     * @IsGranted("ROLE_SUPER_ADMIN")
      */
     public function user_delete(User $user, Request $request, EntityManagerInterface $entitymanager){
 

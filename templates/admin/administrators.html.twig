@@ -16,7 +16,9 @@
                 <th>Email</th>
                 <th>Date de création</th>
                 <th>Role(s)</th>
-                <th>Actions</th>
+                {% if is_granted('ROLE_SUPER_ADMIN') %}
+                    <th>Actions</th>
+                {% endif %}
             </tr>
         </thead>
         <tbody>
@@ -29,16 +31,18 @@
                     <td>{{ user.getCreatedAt|date('d-m-Y') }}</td>
                     <td>{{ user.roles|join(', ') }}
                     </td>
-                    <td>
-                        <button class="btn">
-                            <a href="{{ path('user_edit', {'id': user.id }) }}"><i class="text-warning fa fa-edit"></i></a>
-                        </button>
-                        <form id="delete-form" method="POST" style="display:inline-block" action="{{ path('user_delete', {'id': user.id}) }}">
-                            <input type="hidden" name="_method" value="delete">
-                            <input type="hidden" name="_token" value="{{ csrf_token('SUP' ~ user.id) }}">
-                            <button type="submit" class="btn" onclick="return confirm('Confirmer la suppression?')"><i class='delete-icon text-danger fa fa-times'></i></button>
-                        </form>
-                    </td>
+                     {% if is_granted('ROLE_SUPER_ADMIN') %}
+                        <td>
+                            <button class="btn">
+                                <a href="{{ path('user_edit', {'id': user.id }) }}"><i class="text-warning fa fa-edit"></i></a>
+                            </button>
+                            <form id="delete-form" method="POST" style="display:inline-block" action="{{ path('user_delete', {'id': user.id}) }}">
+                                <input type="hidden" name="_method" value="delete">
+                                <input type="hidden" name="_token" value="{{ csrf_token('SUP' ~ user.id) }}">
+                                <button type="submit" class="btn" onclick="return confirm('Confirmer la suppression?')"><i class='delete-icon text-danger fa fa-times'></i></button>
+                            </form>
+                        </td>
+                    {% endif %}
                 </tr>
             {% endfor %}
         </tbody>
