@@ -4,12 +4,15 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\UserType;
+use DateTimeImmutable;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use Symfony\Component\Validator\Constraints\Date;
 
 class UserCrudController extends AbstractController
 {
@@ -18,7 +21,7 @@ class UserCrudController extends AbstractController
      * @Route("admin/administrateur/{id}", name="user_edit", methods="GET|POST")
      * @IsGranted("ROLE_SUPER_ADMIN")
      */
-    public function user_create_edit(User $user = null, Request $request, EntityManagerInterface $manager): Response
+    public function user_create_edit(User $user = null, Request $request, EntityManagerInterface $manager, UserPasswordHasherInterface $passwordHasher): Response
     {
         if(!$user){
             $user = new User();
@@ -31,6 +34,10 @@ class UserCrudController extends AbstractController
         if($form->isSubmitted() && $form->isValid()){
 
             $user_exists = $user->getId();
+
+            $user->setPassword($passwordHasher->hashPassword($user, $user->getPassword()));
+            $user->setRoles(["ROLE_ADMIN"]);
+            $user->setCreatedAt(new DateTimeImmutable());
 
             $manager->persist($user);
             $manager->flush();

@@ -7,6 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 
 class UserType extends AbstractType
 {
@@ -19,6 +20,12 @@ class UserType extends AbstractType
             ])
             ->add('firstname', TextType::class, [
                 'label' => 'Prénom'
+            ])
+            ->add('password', PasswordType::class, [
+                'label' => 'Mot de passe',
+            ])
+            ->add('confirmPassword', PasswordType::class, [
+                'label' => 'Confirmez le mot de passe'
             ])
         ;
     }

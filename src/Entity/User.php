@@ -42,6 +42,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $password;
 
     /**
+     * @Assert\EqualTo(propertyPath="password", message="Les mots de passe ne sont pas équivalents")
+     */
+
+    private $confirmPassword;
+
+    /**
      * @ORM\Column(type="string", length=255)
      * @Assert\Length(
      *      min=3, 
@@ -133,6 +139,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setPassword(string $password): self
     {
         $this->password = $password;
+
+        return $this;
+    }
+
+    public function getConfirmPassword(): ?string
+    {
+        return $this->confirmPassword;
+    }
+
+    public function setConfirmPassword(string $confirmPassword): self
+    {
+        $this->confirmPassword = $confirmPassword;
 
         return $this;
     }
