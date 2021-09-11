@@ -15,9 +15,9 @@
                 <th>Id</th>
                 <th>{{ knp_pagination_sortable(targets, 'Nom', 't.lastname') }}</th>
                 <th>{{ knp_pagination_sortable(targets, 'Prénom', 't.firstname') }}</th>
-                <th>{{ knp_pagination_sortable(targets, 'Date de naissance', 't.date_of_birth') }}</th>
-                <th>Id Code</th>
-                <th>{{ knp_pagination_sortable(targets, 'Nationalité', 'tn.name') }}</th>
+                <th class="hide-tablet">{{ knp_pagination_sortable(targets, 'Date de naissance', 't.date_of_birth') }}</th>
+                <th class="hide-tablet">Id Code</th>
+                <th class="hide-mobile">{{ knp_pagination_sortable(targets, 'Nationalité', 'tn.name') }}</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -27,9 +27,9 @@
                     <td>{{ target.id }}</td>
                     <td>{{ target.lastname }}</td>
                     <td>{{ target.firstname }}</td>
-                    <td>{{ target.getDateOfBirth|date('d-m-Y') }}</td>
-                    <td>{{ target.getCodeName }}</td>
-                    <td>{{ target.nationality.nationality }}</td>
+                    <td class="hide-tablet">{{ target.getDateOfBirth|date('d-m-Y') }}</td>
+                    <td class="hide-tablet">{{ target.getCodeName }}</td>
+                    <td class="hide-mobile">{{ target.nationality.nationality }}</td>
                     <td>
                         <button class="btn">
                             <a href="{{ path('target_edit', {'id': target.id }) }}"><i class="text-warning fa fa-edit"></i></a>
