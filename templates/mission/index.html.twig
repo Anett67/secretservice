@@ -7,33 +7,40 @@
 
 {% block body %}
 
-    <table class="table table-hover mt-5">
-        <thead>
-            <tr>
-                <th>{{ knp_pagination_sortable(missions, 'Titre', 'm.title') }}</th>
-                <th>{{ knp_pagination_sortable(missions, 'Pays', 'c.name') }}</th>
-                
-                <th>{{ knp_pagination_sortable(missions, 'Type', 't.name') }}</th>
-                <th>{{ knp_pagination_sortable(missions, 'Status', 's.name') }}</th>
-                <th>Code</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for mission in missions %}
-                <tr>
-                    <td>{{ mission.title }}</td>
-                    <td>{{ mission.country.getName }}</td>
-                    <td>{{ mission.type.getName }}</td>
-                    <td>{{ mission.status.getName }}</td>
-                    <td>{{ mission.getCodeName }}</td>
-                    <td><a class="btn btn-info" href="{{ path('single-mission',{'id' : mission.id}) }}">Détails</a></td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    <div class="row justify-content-center">   
 
+        <div class="col-12 col-lg-8">
 
-     {{ knp_pagination_render(missions, '@KnpPaginator/Pagination/twitter_bootstrap_v4_pagination.html.twig') }}
+            <table class="table table-hover mt-5">
+                <thead>
+                    <tr>
+                        <th>{{ knp_pagination_sortable(missions, 'Titre', 'm.title') }}</th>
+                        <th class="hide-mobile">{{ knp_pagination_sortable(missions, 'Pays', 'c.name') }}</th>
+                        
+                        <th class="hide-mobile">{{ knp_pagination_sortable(missions, 'Type', 't.name') }}</th>
+                        <th class="hide-mobile-xs">{{ knp_pagination_sortable(missions, 'Status', 's.name') }}</th>
+                        <th class="hide-tablet">Code</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for mission in missions %}
+                        <tr>
+                            <td>{{ mission.title }}</td>
+                            <td class="hide-mobile">{{ mission.country.getName }}</td>
+                            <td class="hide-mobile">{{ mission.type.getName }}</td>
+                            <td class="hide-mobile-xs">{{ mission.status.getName }}</td>
+                            <td class="hide-tablet">{{ mission.getCodeName }}</td>
+                            <td><a class="btn btn-info" href="{{ path('single-mission',{'id' : mission.id}) }}">Détails</a></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            {{ knp_pagination_render(missions, '@KnpPaginator/Pagination/twitter_bootstrap_v4_pagination.html.twig') }}
+
+        </div>
+
+    </div>
     
 {% endblock %}

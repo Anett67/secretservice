@@ -67,25 +67,25 @@
 
     </div>
 
-        <div class="row">
+    <div class="row">
 
-    <div class="col-12 col-sm-6">
+        <div class="col-12 col-sm-6">
 
-        <h2 class="mt-4 text-info">Planque</h2>
-        
-        {% for hideout in mission.hideout %}
-            <p>{{ hideout.address }}</p>
-            <p>Type: {{ hideout.type.getName }}</p>
-        {% endfor %}
+            <h2 class="mt-4 text-info">Planque</h2>
+            
+            {% for hideout in mission.hideout %}
+                <p>{{ hideout.address }}</p>
+                <p>Type: {{ hideout.type.getName }}</p>
+            {% endfor %}
 
-    </div>
-    <div class="col-12 col-sm-6">
+        </div>
+        <div class="col-12 col-sm-6">
 
-        <h2 class="mt-4 text-info">Pays</h2>
+            <h2 class="mt-4 text-info">Pays</h2>
 
-        <p>{{ mission.country.getName }}</p>
+            <p>{{ mission.country.getName }}</p>
 
-    </div>
+        </div>
 
 </div>
 

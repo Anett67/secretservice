@@ -1,0 +1,17 @@
+@media(max-width: 768px){
+    .hide-tablet{
+        display: none;
+    }
+}
+
+@media(max-width: 576px){
+    .hide-mobile{
+        display: none;
+    }
+}
+
+@media(max-width: 420px){
+    .hide-mobile-xs{
+        display: none;
+    }
+}
