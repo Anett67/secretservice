@@ -7,16 +7,7 @@
 
 {% block body %}
 
-    <div class="row justify-content-end">
-        <div class="col-5">
-            <form class="d-flex p-4">
-                <input class="form-control me-sm-2" type="text" placeholder="Recherche">
-                <button class="btn btn-success my-2 my-sm-0" type="submit">Recherche</button>
-            </form>
-        </div>
-    </div>
-
-    <table class="table table-hover mt-3">
+    <table class="table table-hover mt-5">
         <thead>
             <tr>
                 <th>{{ knp_pagination_sortable(missions, 'Titre', 'm.title') }}</th>
