@@ -13,16 +13,16 @@
             <tr>
                 <th scope="col">
                     {{ knp_pagination_sortable(missions, 'Titre', 'm.title') }}</th>
-                <th scope="col">Code</th>
-                <th class="col">{{ knp_pagination_sortable(missions, 'Pays', 'c.name') }}</th>
-                <th class="col">{{ knp_pagination_sortable(missions, 'Type', 't.name') }}</th>
-                <th class="col">{{ knp_pagination_sortable(missions, 'Spécialité', 'sp.name') }}</th>
-                <th class="col">Cible</th>
-                <th class="col">Planque</th>
-                <th class="col">Agent</th>
-                <th class="col">{{ knp_pagination_sortable(missions, 'Début', 'm.start_date') }}</th>
-                <th class="col">{{ knp_pagination_sortable(missions, 'Fin', 'm.end_date') }}</th>
-                <th class="col">{{ knp_pagination_sortable(missions, 'Status', 's.name') }}</th>
+                <th class="col hide-desktop-sm">Code</th>
+                <th class="col hide-mobile">{{ knp_pagination_sortable(missions, 'Pays', 'c.name') }}</th>
+                <th class="col hide-mobile">{{ knp_pagination_sortable(missions, 'Type', 't.name') }}</th>
+                <th class="col hide-desktop-sm">{{ knp_pagination_sortable(missions, 'Spécialité', 'sp.name') }}</th>
+                <th class="col hide-desktop-sm">Cible</th>
+                <th class="col hide-desktop-sm">Planque</th>
+                <th class="col hide-desktop-sm">Agent</th>
+                <th class="col hide-laptop-sm">{{ knp_pagination_sortable(missions, 'Début', 'm.start_date') }}</th>
+                <th class="col hide-laptop-sm">{{ knp_pagination_sortable(missions, 'Fin', 'm.end_date') }}</th>
+                <th class="col hide-mobile">{{ knp_pagination_sortable(missions, 'Status', 's.name') }}</th>
                 <th class="col">Actions</th>
             </tr>
         </thead>
@@ -30,28 +30,28 @@
             {% for mission in missions %}
                 <tr>
                     <td>{{ mission.title }}</td>
-                    <td>{{ mission.getCodeName }}</td>
-                    <td>{{ mission.country.name }}</td>
-                    <td>{{ mission.specialty.name }}</td>
-                    <td>{{ mission.type.name }}</td>
-                    <td>  
+                    <td class="hide-desktop-sm">{{ mission.getCodeName }}</td>
+                    <td class="hide-mobile">{{ mission.country.name }}</td>
+                    <td class="hide-mobile">{{ mission.type.name }}</td>
+                    <td class="hide-desktop-sm">{{ mission.specialty.name }}</td>
+                    <td class="hide-desktop-sm">  
                         {% for target in mission.target %}
                             {{ target.firstname }} {{ target.lastname }} <br>
                         {% endfor %}
                     </td>
-                    <td>  
+                    <td class="hide-desktop-sm">  
                         {% for hideout in mission.hideout %}
                             {{ hideout.code }} <br>
                         {% endfor %}
                     </td>
-                    <td>  
+                    <td class="hide-desktop-sm">  
                         {% for agent in mission.agent %}
                             {{ agent.firstname }} {{ agent.lastname }} <br>
                         {% endfor %}
                     </td>
-                    <td>{{ mission.getStartDate|date('d-m-Y') }}</td>
-                    <td>{{ mission.getEndDate|date('d-m-Y') }}</td>
-                    <td>{{ mission.status.name }}</td>
+                    <td class="hide-laptop-sm">{{ mission.getStartDate|date('d-m-Y') }}</td>
+                    <td class="hide-laptop-sm">{{ mission.getEndDate|date('d-m-Y') }}</td>
+                    <td class="hide-mobile">{{ mission.status.name }}</td>
                     <td>
                         <button class="btn">
                             <a href="{{ path('mission_edit', {'id': mission.id }) }}"><i class="text-warning fa fa-edit"></i></a>
