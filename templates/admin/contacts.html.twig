@@ -12,25 +12,23 @@
     <table class="table table-hover mt-3">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>{{ knp_pagination_sortable(contacts, 'Nom', 'c.lastname') }}</th>
                 <th>{{ knp_pagination_sortable(contacts, 'Prénom', 'c.firstname') }}</th>
-                <th>{{ knp_pagination_sortable(contacts, 'Date de naissance', 'c.date_of_birth') }}</th>
-                <th>Id Code</th>
-                <th>{{ knp_pagination_sortable(contacts, 'Nationalité', 'cn.name') }}</th>
+                <th class="hide-tablet">{{ knp_pagination_sortable(contacts, 'Date de naissance', 'c.date_of_birth') }}</th>
+                <th class="hide-tablet">Id Code</th>
+                <th class="hide-mobile">{{ knp_pagination_sortable(contacts, 'Nationalité', 'cn.name') }}</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
             {% for contact in contacts %}
                 <tr>
-                    <td>{{ contact.id }}</td>
                     <td>{{ contact.lastname }}</td>
                     <td>{{ contact.firstname }}</td>
-                    <td>{{ contact.getDateOfBirth|date('d-m-Y') }}</td>
-                    <td>{{ contact.getCodeName }}</td>
-                    <td>{{ contact.nationality.nationality }}</td>
-                    <td>
+                    <td class="hide-tablet">{{ contact.getDateOfBirth|date('d-m-Y') }}</td>
+                    <td class="hide-tablet">{{ contact.getCodeName }}</td>
+                    <td class="hide-mobile">{{ contact.nationality.nationality }}</td>
+                    <td class="d-flex">
                         <button class="btn">
                             <a href="{{ path('contact_edit', {'id': contact.id }) }}"><i class="text-warning fa fa-edit"></i></a>
                         </button>
