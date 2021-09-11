@@ -16,6 +16,12 @@
     }
 }
 
+@media(min-width: 991px){
+    .only-desktop{
+        display: none;
+    }
+}
+
 @media(max-width: 768px){
     .hide-tablet{
         display: none;

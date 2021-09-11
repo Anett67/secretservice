@@ -29,7 +29,14 @@
                     <td>{{ user.firstname }}</td>
                     <td class="hide-tablet">{{ user.email }}</td>
                     <td class="hide-tablet">{{ user.getCreatedAt|date('d-m-Y') }}</td>
-                    <td class="hide-tablet-lg">{{ user.roles|join(', ') }}
+                    <td class="hide-tablet-lg">
+                        {% if 'ROLE_SUPER_ADMIN' in user.roles %}
+                            Super Admin
+                        {% elseif 'ROLE_ADMIN' in user.roles %}
+                            Admin
+                        {% else %}
+                            Utilisateur        
+                        {% endif %}
                     </td>
                      {% if is_granted('ROLE_SUPER_ADMIN') %}
                         <td>
