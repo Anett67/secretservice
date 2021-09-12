@@ -47,3 +47,12 @@ label, legend{
     letter-spacing: .1rem;
     font-weight: bolder;
 }
+
+.btn-submit{
+
+    width: 200px;
+
+    @media(max-width: 768px){
+        width: 100%;
+    }
+}
