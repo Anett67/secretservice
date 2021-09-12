@@ -58,7 +58,7 @@ class AdminController extends AbstractController
             10
         );
 
-        return $this->render('admin/Agents.html.twig', [
+        return $this->render('admin/agents.html.twig', [
             'title' => 'Agents',
             'agents' => $pagination
         ]);
@@ -159,7 +159,7 @@ class AdminController extends AbstractController
             10
         );
 
-        return $this->render('admin/Administrators.html.twig', [
+        return $this->render('admin/administrators.html.twig', [
             'title' => 'Administrateurs',
             'users' => $pagination
         ]);
