@@ -25,7 +25,8 @@ class MissionController extends AbstractController
         );
         
         return $this->render('mission/index.html.twig', [
-            'missions' => $pagination
+            'missions' => $pagination,
+            'page' => 'missions'
         ]);
     }
 
@@ -35,7 +36,8 @@ class MissionController extends AbstractController
     public function mission(Mission $mission){
 
         return $this->render('mission/mission.html.twig', [
-            'mission' => $mission
+            'mission' => $mission,
+            'page' => 'missions'
         ]);
     }
 }
