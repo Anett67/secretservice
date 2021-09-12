@@ -11,9 +11,59 @@
         {% endblock %}
 
         {% block javascripts %}
+            {{ encore_entry_script_tags('admin') }}
         {% endblock %}
     </head>
     <body>
+        <nav class="navbar navbar-expand-lg bg-primary p-2 hide-desktop">
+            <a class="navbar-brand" href="{{ path('missions') }}">Accueil</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fa fa-bars text-success"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item py-2 {% if title == 'Missions' %} active {% endif %}">
+                        <a href="{{ path('admin') }}" class="nav-link">
+                           <i class="fa fa-tasks mx-2"></i> MISSIONS</a>
+                    </li>
+                    <li class="nav-item py-2 {% if title == 'Agents' %} active {% endif %}">
+                        <a href="{{ path('admin_agents') }}" class="nav-link">
+                            <i class="fa fa-user-secret mx-2"></i> AGENTS
+                        </a>
+                    </li>
+                    <li class="nav-item py-2 {% if title == 'Contacts' %} active {% endif %}">
+                        <a href="{{ path('admin_contacts') }}" class="nav-link">
+                            <i class="fa fa-phone-square mx-2"></i> CONTACTS
+                        </a>
+                    </li>
+                    <li class="nav-item py-2 {% if title == 'Cibles' %} active {% endif %}">
+                        <a href="{{ path('admin_targets') }}" class="nav-link">
+                            <i class="fa fa-bullseye mx-2"></i> CIBLES
+                        </a>
+                    </li>
+                    <li class="nav-item py-2 {% if title == 'Planques' %} active {% endif %}">
+                        <a href="{{ path('admin_hideouts') }}" class="nav-link">
+                            <i class="fa fa-eye-slash mx-2"></i> PLANQUES
+                        </a>
+                    </li>
+                    <li class="nav-item py-2 {% if title == 'Pays' %} active {% endif %}">
+                        <a href="{{ path('admin_countries') }}" class="nav-link">
+                            <i class="fa fa-globe mx-2"></i> PAYS
+                        </a>
+                    </li>
+                    <li class="nav-item py-2 {% if title == 'Spécialités' %} active {% endif %}">
+                        <a href="{{ path('admin_specialties') }}" class="nav-link">
+                            <i class="fa fa-briefcase mx-2"></i> SPECIALITES
+                        </a>
+                    </li>
+                    <li class="nav-item py-2 {% if title == 'Administrateurs' %} active {% endif %}">
+                        <a href="{{ path('admin_administrators') }}" class="nav-link">
+                            <i class="fa fa-address-card mx-2"></i> ADMINISTRATEURS
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
         <div class="admin-sidebar-menu bg-primary p-2 hide-tablet-lg">
 
             <nav class="navbar navbar-expand-lg">

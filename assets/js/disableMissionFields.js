@@ -79,6 +79,7 @@ const disableHideoutsOfOtherCountries = country => {
     }
 }
 
+
  disableContactsOfOtherCountries(country.val())
  disableHideoutsOfOtherCountries(country.val())
  disableTargetsOfAgentsNationality(agent.val())
