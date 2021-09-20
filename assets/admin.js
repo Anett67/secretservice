@@ -16,8 +16,7 @@ import './styles/app.scss';
 // start the Stimulus application
 import './bootstrap';
 
-$('.navbar-toggler').click(() => {
-    $('#navbarNav').slideToggle()
-})
+import './js/navbar'
+
 
 

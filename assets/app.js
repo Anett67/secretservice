@@ -18,3 +18,6 @@ import './bootstrap';
 
 import './js/disableMissionFields'
 
+$('.navbar-toggler').click(() => {
+    $('#navbarNav').slideToggle()
+})
